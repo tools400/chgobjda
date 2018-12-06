@@ -1,0 +1,481 @@
+.*=====================================================================*
+.*                                                                     *
+.*  Kurzdokumentation :                                                *
+.*                                                                     *
+.*  Bereich . . . : CHGOBJDA                                           *
+.*  Objekt  . . . : CHGOBJDAPG                                         *
+.*  Beschreibung  : Tool: CHGOBJDA   (Change object desc.)    ENG      *
+.*  Author  . . . : Thomas Raddatz   <thomas.raddatz@tools400.de>      *
+.*  Datum . . . . : 08.03.2001                                         *
+.*                                                                     *
+.*=====================================================================*
+.*                                                                     *
+.*  This software is free software, you can redistribute it and/or     *
+.*  modify it under the terms of the GNU General Public License (GPL)  *
+.*  as published by the Free Software Foundation.                      *
+.*                                                                     *
+.*  See GNU General Public License for details.                        *
+.*          http://www.opensource.org                                  *
+.*          http://www.opensource.org/licenses/gpl-license.html        *
+.*                                                                     *
+.*=====================================================================*
+.*  History:                                                           *
+.*                                                                     *
+.*  Datum       Name          Änderung                                 *
+.*  ----------  ------------  ---------------------------------------  *
+.*                                                                     *
+.*=====================================================================*
+.* >>PRE-COMPILER<<                                                    *
+.*                                                                     *
+.*   >>CRTCMD<< CRTPNLGRP    PNLGRP(&LI/&OB) +                         *
+.*                           SRCFILE(&SL/&SF) +                        *
+.*                           SRCMBR(&SM);                              *
+.*                                                                     *
+.*   >>COMPILE<<                                                       *
+.*   >>END-COMPILE<<                                                   *
+.*                                                                     *
+.*   >>EXECUTE<<                                                       *
+.*                                                                     *
+.* >>END-PRE-COMPILER<<                                                *
+.*=====================================================================*
+:PNLGRP.
+
+.*****************************************************************
+.*  Provide all the help for the command together in one help ID
+.*  so that it can be used by a search index.
+.*****************************************************************
+:HELP name='CHGOBJDA/ALL'.
+:IMHELP name=CHGOBJDA.
+:IMHELP name='CHGOBJDA/OBJ'.
+:IMHELP name='CHGOBJDA/OBJTYPE'.
+:IMHELP name='CHGOBJDA/SRCF'.
+:IMHELP name='CHGOBJDA/SRCFLIB'.
+:IMHELP name='CHGOBJDA/SRCMBR'.
+:IMHELP name='CHGOBJDA/SRCDATE'.
+:IMHELP name='CHGOBJDA/SRCTIME'.
+:IMHELP name='CHGOBJDA/OBJLVL'.
+:IMHELP name='CHGOBJDA/LICPGM'.
+:IMHELP name='CHGOBJDA/PTF'.
+:IMHELP name='CHGOBJDA/APAR'.
+:IMHELP name='CHGOBJDA/USRDFNATR'.
+:EHELP.
+
+.*****************************************************************
+.*  Primary help text for the command.
+.*****************************************************************
+:HELP NAME='CHGOBJDA'.
+Objektbeschr.Attribute ändern - Hilfe
+:P.
+Der Befehl Objektbeschreibung ändern (CHGOBJD) ändert verschiedene
+Attribute der Objektbeschreibung.
+:P.
+Obwohl der Befehl CHGOBJDA ursprünglich entwickelt worden ist, um
+die eingesetzte Change Management Software an eigene Bedürfnisse
+anzupassen, kann er auch ausserhalb der Change Management Software
+verwendet werden und gute Dienste leisten.
+:EHELP.
+
+.*****************************************************************
+.*  Help text for the command parameters.
+.*****************************************************************
+
+.********************************************
+.*  Keyword:  OBJ
+.********************************************
+:HELP NAME='CHGOBJDA/OBJ'.
+Objekt (OBJ) - Hilfe
+
+:XH3.Objekt (OBJ)
+
+:P.
+Gibt den qualifizierten Namen des Objekts an, dessen
+Objektbeschreibung geändert wird. Wird kein Bibliotheksname angegeben,
+wird das angegebene Objekt anhand der Bibliotheksliste (*LIBL)
+gesucht. Die Angabe des Bibliotheksnamens dient dazu,
+sicherzustellen, daß das korrekte Objekt angegeben wird.
+
+:IMHELP name='COM/REQPARM'.
+:P.
+Mögliche Werte für :HP2.Objektname:EHP2. sind:
+
+:PARML.
+:PT.:PV.Objektname:EPV.
+:PD.Den Namen des zu ändernden Objekts angeben.
+:EPARML.
+:P.
+
+Gültige Bibliothekswerte sind:
+
+:PARML.
+:PT.:PK DEF.*LIBL:EPK.
+:PD.Alle Bibliotheken in der Bibliotheksliste des Jobs werden
+durchsucht, bis die erste Übereinstimmung gefunden wird.
+:PT.:PV.*CURLIB:EPV.
+:PD.Das Objekt wird mit Hilfe der aktuellen Jobbibliothek gesucht.
+Ist keine Bibliothek als aktuelle Jobbibliothek angegeben, wird
+QGPL verwendet.
+:PT.:PV.Bibliotheksname:EPV.
+:PD.Den Namen der Bibliothek angeben.
+:EPARML.
+:EHELP.
+
+.********************************************
+.*  Keyword:  OBJTYPE
+.********************************************
+:HELP NAME='CHGOBJDA/OBJTYPE'.
+Objektart (OBJTYPE) - Hilfe
+
+:XH3.Objektart (OBJTYPE)
+
+:P.
+Gibt die Objektart des Objekts an, das geändert werden soll. Um eine
+vollständige Liste der Objektarten zu erhalten, den
+Positionsanzeiger in das Feld für Objektart (Parameter OBJTYPE)
+bewegen und die Taste F4 drücken.
+
+:IMHELP name='COM/REQPARM'.
+:P.
+:IMHELP name='COM/VALUES'.
+
+:PARML.
+:PT.:PV.Objektart:EPV.
+:PD.Den vordefinierten Wert angegeben, der die zu ändernde Objektart
+bezeichnet.
+:EPARML.
+:EHELP.
+
+.********************************************
+.*  Keyword:  SRCF
+.********************************************
+:HELP NAME='CHGOBJDA/SRCF'.
+Quellendatei (SRCF) - Hilfe
+
+:XH3.Quellendatei (SRCF)
+
+:P.
+Name der Quellendatei, welche die Quellenteildatei enthält, aus
+der das Objekt erstellt worden ist.
+
+:IMHELP name='COM/OPTPARM'.
+:P.
+:IMHELP name='COM/VALUES'.
+
+:PARML.
+:PT.:PK DEF.*SAME:EPK.
+:PD.Der Name der Quellendatei bleibt unverändert.
+:PT.:PV.*BLANK:EPV.
+:PD.Es ist kein Name einer Quellendatei angegeben.
+:PT.:PV.Quellendatei:EPV.
+:PD.Name der Quellendatei, welche die Quellenteildatei enthält, aus
+der das Objekt erstellt worden ist.
+:EPARML.
+:EHELP.
+
+.********************************************
+.*  Keyword:  SRCFLIB
+.********************************************
+:HELP NAME='CHGOBJDA/SRCFLIB'.
+Quellenbibliothek (SRCFLIB) - Hilfe
+
+:XH3.Quellenbibliothek (SRCFLIB)
+
+:P.
+Name der Bibliothek, welche die Quellendatei enthält.
+
+:IMHELP name='COM/OPTPARM'.
+:P.
+:IMHELP name='COM/VALUES'.
+
+:PARML.
+:PT.:PK DEF.*SAME:EPK.
+:PD.Der Name der Quellenbibliothek bleibt unverändert.
+:PT.:PV.*BLANK:EPV.
+:PD.Es ist kein Name einer Quellenbibliothek angegeben.
+:PT.:PV.Quellenbibliothek:EPV.
+:PD.Name der Bibliothek, welche die Quellendatei enthält.
+:EPARML.
+:EHELP.
+
+.********************************************
+.*  Keyword:  SRCMBR
+.********************************************
+:HELP NAME='CHGOBJDA/SRCMBR'.
+Quellenteildatei (SRCMBR) - Hilfe
+
+:XH3.Quellenteildatei (SRCMBR)
+
+:P.
+Name der Quellenteildatei, aus der das Objekt erstellt worden ist.
+
+:IMHELP name='COM/OPTPARM'.
+:P.
+:IMHELP name='COM/VALUES'.
+
+:PARML.
+:PT.:PK DEF.*SAME:EPK.
+:PD.Der Name der Quellenteildatei bleibt unverändert.
+:PT.:PV.*BLANK:EPV.
+:PD.Es ist kein Name einer Quellenteildatei angegeben.
+:PT.:PV.Quellenteildatei:EPV.
+:PD.Name der Quellenteildatei, aus der das Objekt erstellt worden ist.
+:EPARML.
+:EHELP.
+
+.********************************************
+.*  Keyword:  SRCDATE
+.********************************************
+:HELP NAME='CHGOBJDA/SRCDATE'.
+Datum Quellenteildatei (SRCDATE) - Hilfe
+
+:XH3.Datum Quellenteildatei (SRCDATE)
+
+:P.
+Bei einer physischen Quellenteildtei ist dies das Datum, an dem der
+Dateiinhalt zuletzt geändert wurde.
+
+:IMHELP name='COM/OPTPARM'.
+:P.
+:IMHELP name='COM/VALUES'.
+
+:PARML.
+:PT.:PK DEF.*SAME:EPK.
+:PD.Das Datum der letzten Änderung bleibt unverändert.
+:PT.:PV.*SRCMBR:EPV.
+:PD.Das Datum der letzen Änderung wird der im Parameter
+:HP2.Quellenteildatei:EHP2. angegebenen Teildatei entnommen.
+:PT.:PV.Datum:EPV.
+:PD.Datum der letzen Änderung des Dateiinhalts.
+:EPARML.
+:EHELP.
+
+.********************************************
+.*  Keyword:  SRCTIME
+.********************************************
+:HELP NAME='CHGOBJDA/SRCTIME'.
+Uhrzeit Quellenteildatei (SRCTIME) - Hilfe
+
+:XH3.Uhrzeit Quellenteildatei (SRCTIME)
+
+:P.
+Bei einer physischen Quellenteildtei ist dies die Uhrzeit, an dem der
+Dateiinhalt zuletzt geändert wurde.
+
+:IMHELP name='COM/OPTPARM'.
+:P.
+:IMHELP name='COM/VALUES'.
+
+:PARML.
+:PT.:PK DEF.*SAME:EPK.
+:PD.Die Uhrzeit der letzten Änderung bleibt unverändert.
+:PT.:PV.*SRCMBR:EPV.
+:PD.Die Uhrzeit der letzen Änderung wird der im Parameter
+:HP2.Quellenteildatei:EHP2. angegebenen Teildatei entnommen.
+:PT.:PV.Uhrzeit:EPV.
+:PD.Uhrzeit der letzen Änderung des Dateiinhalts.
+:EPARML.
+:EHELP.
+
+.********************************************
+.*  Keyword:  OBJLVL
+.********************************************
+:HELP NAME='CHGOBJDA/OBJLVL'.
+Objektsteuerstufe (OBJLVL) - Hilfe
+
+:XH3.Objektsteuerstufe (OBJLVL)
+
+:P.
+Die Objektsteuerstufe eines Objekts sollte aus einer eindeutigen
+Ident-Nummer bestehen, die mit jeder Änderung des Objects geändert
+werden sollte.
+:P.
+Die Change Management Software benutzt die Objektsteuerstufe zur
+Speicherung der Task-Nummer, der das Objekt zugeordnet war.
+:P.
+:IMHELP name='COM/OPTPARM'.
+:P.
+:IMHELP name='COM/VALUES'.
+
+:PARML.
+:PT.:PK DEF.*SAME:EPK.
+:PD.Die Objektsteuerstufe bleibt unverändert.
+:PT.:PV.*BLANK:EPV.
+:PD.Es ist keine Objektsteuerstufe angegeben.
+:PT.:PV.Objektsteuerstufe:EPV.
+:PD.Objektsteuerstufe des Objekts.
+:EPARML.
+:EHELP.
+
+.********************************************
+.*  Keyword:  LICPGM
+.********************************************
+:HELP NAME='CHGOBJDA/LICPGM'.
+Lizenzprogramm (LICPGM) - Hilfe
+
+:XH3.Lizenzprogramm (LICPGM)
+
+:P.
+Name, Versionsstufe, Releasestufe und Modifikationsstufe
+des Lizenzprogramms, zu dem das Objekt gehört.
+:P.
+:LINES.
+Stelle  1- 7:  Programmkenunng
+Stelle  8- 9:  Versionsstufe
+Stelle 10-11:  Releasestufe
+Stelle 12-13:  Modifikationsstufe
+:ELINES.
+:P.
+Die Change Management Software benutzt das Lizenzprogramm zur
+Speicherung der Modifikatinsstufe des Objekts.
+:P.
+:LINES.
+Stelle  1- 3:  Modifikationsstufe (*MAJOR)
+Stelle     4:  Punkt               (.)
+Stelle  5- 7:  Modifikationsstufe  (*MINOR)
+:ELINES.
+:P.
+:IMHELP name='COM/OPTPARM'.
+:P.
+:IMHELP name='COM/VALUES'.
+
+:PARML.
+:PT.:PK DEF.*SAME:EPK.
+:PD.Die Angaben zum Lizenzprogramm bleiben unverändert.
+:PT.:PV.*BLANK:EPV.
+:PD.Es ist kein Lizenzprogramm angegeben.
+:PT.:PV.Lizenzprogramm:EPV.
+:PD.Name, Versionsstufe, Releasestufe und Modifikationsstufe
+des Lizenzprogramms, zu dem das Objekt gehört.
+:EPARML.
+:EHELP.
+
+.********************************************
+.*  Keyword:  PTF
+.********************************************
+:HELP NAME='CHGOBJDA/PTF'.
+PTF-Nummer (PTF) - Hilfe
+
+:XH3.PTF-Nummer (PTF)
+
+:P.
+Nummer der vorläufigen Programmkorrektur die zur Erstellung
+des Objekts geführt hat.
+:P.
+Die Change Management Software benutzt die PTF-Nummer zur
+Speicherung der Form-Nummer, mit der das Objekt verbracht worden ist.
+:P.
+
+:IMHELP name='COM/OPTPARM'.
+:P.
+:IMHELP name='COM/VALUES'.
+
+:PARML.
+:PT.:PK DEF.*SAME:EPK.
+:PD.Die PTF-Nummer bleibt unverändert.
+:PT.:PV.*BLANK:EPV.
+:PD.Es ist keine PTF-Nummer angegeben.
+:PT.:PV.PTF-Nummer:EPV.
+:PD.Nummer der vorläufigen Programmkorrektur die zur Erstellung
+des Objekts geführt hat.
+:EPARML.
+:EHELP.
+
+.********************************************
+.*  Keyword:  APAR
+.********************************************
+:HELP NAME='CHGOBJDA/APAR'.
+APAR-Nummer (APAR) - Hilfe
+
+:XH3.APAR-Nummer (APAR)
+
+:P.
+APAR-ID (Authorized Problem Analysis Report ID) die
+zur Korrektur des Objekts geführt hat.
+:P.
+Die Change Management Software benutzt die APAR-ID zur
+Speicherung der Anwendung, zu der das Objekt gehört.
+:P.
+:LINES.
+Stelle  1- 4:  Anwendung
+Stelle  5- 6:  unbekannt
+:ELINES.
+:P.
+
+:IMHELP name='COM/OPTPARM'.
+:P.
+:IMHELP name='COM/VALUES'.
+
+:PARML.
+:PT.:PK DEF.*SAME:EPK.
+:PD.Die APAR-ID bleibt unverändert.
+:PT.:PV.*BLANK:EPV.
+:PD.Es ist keine APAR-ID angegeben.
+:PT.:PV.APAR-ID:EPV.
+:PD.APAR-ID (Authorized Problem Analysis Report ID) die
+zur Korrektur des Objekts geführt hat.
+:EPARML.
+:EHELP.
+
+.********************************************
+.*  Keyword:  USRDFNATR
+.********************************************
+:HELP NAME='CHGOBJDA/USRDFNATR'.
+Benutzerdefiniertes Attribut (USRDFNATR) - Hilfe
+
+:XH3.Benutzerdefiniertes Attribut (USRDFNATR)
+
+:P.
+Das benutzerdefinierte Attribute eines Objekts kann zur näheren
+Spezifizierung eines Objekts benutzt werden.
+:P.
+Die Change Management Software benutzt das benutzerdefinierte Attribut
+zur Speicherung des Type Codes, zu dem das Objekt gehört.
+:P.
+
+:IMHELP name='COM/OPTPARM'.
+:P.
+:IMHELP name='COM/VALUES'.
+
+:PARML.
+:PT.:PK DEF.*SAME:EPK.
+:PD.Das benutzerdefinierte Attribut bleibt unverändert.
+:PT.:PV.*BLANK:EPV.
+:PD.Es ist kein benutzerdefiniertes Attribut angegeben.
+:PT.:PV.Benutzerdefiniertes Attribut:EPV.
+:PD.Benutzerdefiniertes Attribut zur näheren Spezifizierung
+des Objekts.
+:EPARML.
+:EHELP.
+
+.*****************************************************************
+.*  Common help text that is imbedded into one or more places.
+.*****************************************************************
+
+.********************************************
+.*  Required Parameter
+.********************************************
+:HELP NAME='COM/REQPARM'.
+:P.
+Dieser Parameter ist erforderlich.
+:EHELP.
+
+.********************************************
+.*  Optional Parameter
+.********************************************
+:HELP NAME='COM/OPTPARM'.
+:P.
+Dieser Parameter ist optional.
+:EHELP.
+
+.********************************************
+.*  List of values
+.********************************************
+:HELP NAME='COM/VALUES'.
+:P.
+Mögliche Werte sind:
+:EHELP.
+
+.*****************************************************************
+.*  End of Panel Group
+.*****************************************************************
+:EPNLGRP.
+
