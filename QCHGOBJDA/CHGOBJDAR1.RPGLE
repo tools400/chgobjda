@@ -441,7 +441,7 @@
      C                   Return
      C                   Endif
       *
-      *  Ãndern der Objektbeschreibung
+      *  Ändern der Objektbeschreibung
      C                   Call      'QLICOBJD'
      C                   Parm                    retLibNme
      C                   Parm                    i_qObj
