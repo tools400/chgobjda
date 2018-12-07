@@ -1,15 +1,15 @@
-     /* ----------------------------------------------------------- */                    /* RADD */
-     /*   Cmd-ADDMSGD für Message-ID :   COA0001                    */                    /* RADD */
-     /* Die Angaben zur Quellenteildatei sind unvollständig.        */                    /* RADD */
-     /* ----------------------------------------------------------- */                    /* RADD */
-                                                                                          /* RADD */
-             PGM        PARM(&LI)                                                         /* RADD */
-                                                                                          /* RADD */
-             DCL        VAR(&LI) TYPE(*CHAR) LEN(10)                                      /* RADD */
-                                                                                          /* RADD */
-             RMVMSGD MSGID(COA0001) MSGF(&LI/CHGOBJDA)                                    /* RADD */
-             MONMSG  MSGID(CPF2419)     /* MsgID nicht gefunden */                        /* RADD */
-                                                                                          /* RADD */
+     /* ----------------------------------------------------------- */
+     /*   Cmd-ADDMSGD für Message-ID :   COA0001                    */
+     /* Die Angaben zur Quellenteildatei sind unvollständig.        */
+     /* ----------------------------------------------------------- */
+
+             PGM        PARM(&LI)
+
+             DCL        VAR(&LI) TYPE(*CHAR) LEN(10)
+
+             RMVMSGD MSGID(COA0001) MSGF(&LI/CHGOBJDA)
+             MONMSG  MSGID(CPF2419)     /* MsgID nicht gefunden */
+
              ADDMSGD +
                 MSGID(COA0001) +
                 MSGF(&LI/CHGOBJDA) +
@@ -27,16 +27,16 @@ enbibliothek und Quellenteildatei ein und führen Sie den Befehl erneut-
      /*   Keine Ersatzvariablen definiert!                          */ +
                 ALROPT(*NO) +
                 CCSID( 65535) +
-                /*  -EOF-  */                                                             /* RADD */
-                                                                                          /* RADD */
-     /* ----------------------------------------------------------- */                    /* RADD */
-     /*   Cmd-ADDMSGD für Message-ID :   COA0002                    */                    /* RADD */
-     /* Zu viele Werte angegeben.                                   */                    /* RADD */
-     /* ----------------------------------------------------------- */                    /* RADD */
-                                                                                          /* RADD */
-             RMVMSGD MSGID(COA0002) MSGF(&LI/CHGOBJDA)                                    /* RADD */
-             MONMSG  MSGID(CPF2419)     /* MsgID nicht gefunden */                        /* RADD */
-                                                                                          /* RADD */
+                /*  -EOF-  */
+
+     /* ----------------------------------------------------------- */
+     /*   Cmd-ADDMSGD für Message-ID :   COA0002                    */
+     /* Zu viele Werte angegeben.                                   */
+     /* ----------------------------------------------------------- */
+
+             RMVMSGD MSGID(COA0002) MSGF(&LI/CHGOBJDA)
+             MONMSG  MSGID(CPF2419)     /* MsgID nicht gefunden */
+
              ADDMSGD +
                 MSGID(COA0002) +
                 MSGF(&LI/CHGOBJDA) +
@@ -52,16 +52,16 @@ Arbeitsfeld ist nicht gross genug, um alle Werte verarbeiten zu können-
      /*   Keine Ersatzvariablen definiert!                          */ +
                 ALROPT(*NO) +
                 CCSID( 65535) +
-                /*  -EOF-  */                                                             /* RADD */
-                                                                                          /* RADD */
-     /* ----------------------------------------------------------- */                    /* RADD */
-     /*   Cmd-ADDMSGD für Message-ID :   COA0003                    */                    /* RADD */
-     /* Teildatei &3 in Datei &2/&1 nicht gefunden.                 */                    /* RADD */
-     /* ----------------------------------------------------------- */                    /* RADD */
-                                                                                          /* RADD */
-             RMVMSGD MSGID(COA0003) MSGF(&LI/CHGOBJDA)                                    /* RADD */
-             MONMSG  MSGID(CPF2419)     /* MsgID nicht gefunden */                        /* RADD */
-                                                                                          /* RADD */
+                /*  -EOF-  */
+
+     /* ----------------------------------------------------------- */
+     /*   Cmd-ADDMSGD für Message-ID :   COA0003                    */
+     /* Teildatei &3 in Datei &2/&1 nicht gefunden.                 */
+     /* ----------------------------------------------------------- */
+
+             RMVMSGD MSGID(COA0003) MSGF(&LI/CHGOBJDA)
+             MONMSG  MSGID(CPF2419)     /* MsgID nicht gefunden */
+
              ADDMSGD +
                 MSGID(COA0003) +
                 MSGF(&LI/CHGOBJDA) +
@@ -81,16 +81,16 @@ rt der Teildatei &3 an und führen Sie den Befehl erneut aus.'         +
                 ) +
                 ALROPT(*NO) +
                 CCSID( 65535) +
-                /*  -EOF-  */                                                             /* RADD */
-                                                                                          /* RADD */
-     /* ----------------------------------------------------------- */                    /* RADD */
-     /*   Cmd-ADDMSGD für Message-ID :   COA0004                    */                    /* RADD */
-     /* Objekt &1 in Bibliothek &2 Art &3 nicht gefunden.           */                    /* RADD */
-     /* ----------------------------------------------------------- */                    /* RADD */
-                                                                                          /* RADD */
-             RMVMSGD MSGID(COA0004) MSGF(&LI/CHGOBJDA)                                    /* RADD */
-             MONMSG  MSGID(CPF2419)     /* MsgID nicht gefunden */                        /* RADD */
-                                                                                          /* RADD */
+                /*  -EOF-  */
+
+     /* ----------------------------------------------------------- */
+     /*   Cmd-ADDMSGD für Message-ID :   COA0004                    */
+     /* Objekt &1 in Bibliothek &2 Art &3 nicht gefunden.           */
+     /* ----------------------------------------------------------- */
+
+             RMVMSGD MSGID(COA0004) MSGF(&LI/CHGOBJDA)
+             MONMSG  MSGID(CPF2419)     /* MsgID nicht gefunden */
+
              ADDMSGD +
                 MSGID(COA0004) +
                 MSGF(&LI/CHGOBJDA) +
@@ -112,6 +112,6 @@ liotheksliste enthalten ist.'                                         +
                 ) +
                 ALROPT(*NO) +
                 CCSID( 65535) +
-                /*  -EOF-  */                                                             /* RADD */
-                                                                                          /* RADD */
-             ENDPGM     /* RADD */                                                        /* RADD */
+                /*  -EOF-  */
+
+             ENDPGM     /* RADD */

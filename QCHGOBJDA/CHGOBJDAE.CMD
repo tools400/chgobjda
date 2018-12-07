@@ -1,59 +1,59 @@
-/* =================================================================== */                 /* RADD */
-/*                                                                     */                 /* RADD */
-/*  Kurzdokumentation :                                                */                 /* RADD */
-/*                                                                     */                 /* RADD */
-/*  Bereich . . . : CHGOBJDA                                           */                 /* RADD */
-/*  Objekt  . . . : CHGOBJDAE                                          */                 /* RADD */
-/*  Beschreibung  : Tool: CHGOBJDA   (Change object dsc. attr.  ) Eng  */                 /* RADD */
-/*  Author  . . . : Thomas Raddatz   <thomas.raddatz@tools400.de>      */                 /* RADD */
-/*  Datum . . . . : 26.05.2001                                         */                 /* RADD */
-/*                                                                     */                 /* RADD */
-/* =================================================================== */                 /* RADD */
-/*                                                                     */                 /* RADD */
-/*  This software is free software, you can redistribute it and/or     */                 /* RADD */
-/*  modify it under the terms of the GNU General Public License (GPL)  */                 /* RADD */
-/*  as published by the Free Software Foundation.                      */                 /* RADD */
-/*                                                                     */                 /* RADD */
-/*  See GNU General Public License for details.                        */                 /* RADD */
-/*          http://www.opensource.org                                  */                 /* RADD */
-/*          http://www.opensource.org/licenses/gpl-license.html        */                 /* RADD */
-/*                                                                     */                 /* RADD */
-/* =================================================================== */                 /* RADD */
-/*  History:                                                           */                 /* RADD */
-/*                                                                     */                 /* RADD */
-/*  Datum       Name          Änderung                                 */                 /* RADD */
-/*  ----------  ------------  ---------------------------------------  */                 /* RADD */
-/*  02.02.2006  Th.Raddatz    Adopted the prompt override enhancement  */                 /* RADD */
-/*                            contributed by Bill Reger. Thanks Bill!  */                 /* RADD */
-/*                                                                     */                 /* RADD */
-/* =================================================================== */                 /* RADD */
-/* >>PRE-COMPILER<<                                                    */                 /* RADD */
-/*                                                                     */                 /* RADD */
-/*   >>CRTCMD<< CRTCMD       CMD(&LI/&OB) +                            */                 /* RADD */
-/*                           SRCFILE(&SL/&SF) +                        */                 /* RADD */
-/*                           SRCMBR(&SM);                              */                 /* RADD */
-/*                                                                     */                 /* RADD */
-/*   >>COMPILE<<                                                       */                 /* RADD */
-/*     >>PARM<< PGM(*LIBL/CHGOBJDA);                                   */                 /* RADD */
-/*     >>PARM<< HLPPNLGRP(*LIBL/CHGOBJDAPE);                           */                 /* RADD */
-/*     >>PARM<< HLPID(CHGOBJDA);                                       */                 /* RADD */
-/*     >>PARM<< PRDLIB(&LI);                                           */                 /* RADD */
-/*     >>PARM<< PMTOVRPGM(*LIBL/CHGOBJDAPO);                           */                 /* RADD */
-/*   >>END-COMPILE<<                                                   */                 /* RADD */
-/*                                                                     */                 /* RADD */
-/*   >>EXECUTE<<                                                       */                 /* RADD */
-/*                                                                     */                 /* RADD */
-/* >>END-PRE-COMPILER<<                                                */                 /* RADD */
-/* =================================================================== */                 /* RADD */
+/* =================================================================== */
+/*                                                                     */
+/*  Kurzdokumentation :                                                */
+/*                                                                     */
+/*  Bereich . . . : CHGOBJDA                                           */
+/*  Objekt  . . . : CHGOBJDAE                                          */
+/*  Beschreibung  : Tool: CHGOBJDA   (Change object dsc. attr.  ) Eng  */
+/*  Author  . . . : Thomas Raddatz   <thomas.raddatz@tools400.de>      */
+/*  Datum . . . . : 26.05.2001                                         */
+/*                                                                     */
+/* =================================================================== */
+/*                                                                     */
+/*  This software is free software, you can redistribute it and/or     */
+/*  modify it under the terms of the GNU General Public License (GPL)  */
+/*  as published by the Free Software Foundation.                      */
+/*                                                                     */
+/*  See GNU General Public License for details.                        */
+/*          http://www.opensource.org                                  */
+/*          http://www.opensource.org/licenses/gpl-license.html        */
+/*                                                                     */
+/* =================================================================== */
+/*  History:                                                           */
+/*                                                                     */
+/*  Datum       Name          Änderung                                 */
+/*  ----------  ------------  ---------------------------------------  */
+/*  02.02.2006  Th.Raddatz    Adopted the prompt override enhancement  */
+/*                            contributed by Bill Reger. Thanks Bill!  */
+/*                                                                     */
+/* =================================================================== */
+/* >>PRE-COMPILER<<                                                    */
+/*                                                                     */
+/*   >>CRTCMD<< CRTCMD       CMD(&LI/&OB) +                            */
+/*                           SRCFILE(&SL/&SF) +                        */
+/*                           SRCMBR(&SM);                              */
+/*                                                                     */
+/*   >>COMPILE<<                                                       */
+/*     >>PARM<< PGM(*LIBL/CHGOBJDA);                                   */
+/*     >>PARM<< HLPPNLGRP(*LIBL/CHGOBJDAPE);                           */
+/*     >>PARM<< HLPID(CHGOBJDA);                                       */
+/*     >>PARM<< PRDLIB(&LI);                                           */
+/*     >>PARM<< PMTOVRPGM(*LIBL/CHGOBJDAPO);                           */
+/*   >>END-COMPILE<<                                                   */
+/*                                                                     */
+/*   >>EXECUTE<<                                                       */
+/*                                                                     */
+/* >>END-PRE-COMPILER<<                                                */
+/* =================================================================== */
 
-             CMD        PROMPT('Change Object Description Attr')                          /* RADD */
+             CMD        PROMPT('Change Object Description Attr')
 
              PARM       KWD(OBJ)                +
                         TYPE(QUAL1)             +
                         MIN(1)                  +
                         CHOICE(*NONE)           +
                         KEYPARM(*YES)           +
-                        PROMPT('Object')                                                  /* RADD */
+                        PROMPT('Object')
 
              PARM       KWD(OBJTYPE)            +
                         TYPE(*CHAR)             +
@@ -129,7 +129,7 @@
                           '*USRSPC'             +
                           '*WSCST')             +
                         KEYPARM(*YES)           +
-                        PROMPT('Object type')                                             /* RADD */
+                        PROMPT('Object type')
 
              PARM       KWD(SRCF)               +
                         TYPE(*NAME)             +
@@ -139,7 +139,7 @@
                         SPCVAL(                 +
                           (*SAME      )         +
                           (*BLANK ' ' ))        +
-                        PROMPT('Source file')                                             /* RADD */
+                        PROMPT('Source file')
 
              PARM       KWD(SRCFLIB)            +
                         TYPE(*NAME)             +
@@ -149,7 +149,7 @@
                         SPCVAL(                 +
                           (*SAME      )         +
                           (*BLANK ' ' ))        +
-                        PROMPT('Source file library')                                     /* RADD */
+                        PROMPT('Source file library')
 
              PARM       KWD(SRCMBR)             +
                         TYPE(*NAME)             +
@@ -159,8 +159,8 @@
                         SPCVAL(                 +
                           (*SAME      )         +
                           (*BLANK ' ' ))        +
-                        PROMPT('Source member')                                           /* RADD */
-                                                                                          /* RADD */
+                        PROMPT('Source member')
+
              PARM       KWD(SRCDATE)            +
                         TYPE(*DATE)             +
                         MIN(0)                  +
@@ -168,8 +168,8 @@
                         SPCVAL(                 +
                           (*SAME   0000000)     +
                           (*SRCMBR 0000001))    +
-                        PROMPT('Source member change date')                               /* RADD */
-                                                                                          /* RADD */
+                        PROMPT('Source member change date')
+
              PARM       KWD(SRCTIME)            +
                         TYPE(*TIME)             +
                         MIN(0)                  +
@@ -177,8 +177,8 @@
                         SPCVAL(                 +
                           (*SAME   000000)      +
                           (*SRCMBR 000001))     +
-                        PROMPT('Source member change time')                               /* RADD */
-                                                                                          /* RADD */
+                        PROMPT('Source member change time')
+
              PARM       KWD(OBJLVL   )          +
                         TYPE(*CHAR)             +
                         LEN( 8)                 +
@@ -187,8 +187,8 @@
                         SPCVAL(                 +
                           (*SAME      )         +
                           (*BLANK ' ' ))        +
-                        PROMPT('Object control level')                                    /* RADD */
-                                                                                          /* RADD */
+                        PROMPT('Object control level')
+
              PARM       KWD(LICPGM   )          +
                         TYPE(*CHAR)             +
                         LEN(13)                 +
@@ -197,8 +197,8 @@
                         SPCVAL(                 +
                           (*SAME      )         +
                           (*BLANK ' ' ))        +
-                        PROMPT('Licensed program')                                        /* RADD */
-                                                                                          /* RADD */
+                        PROMPT('Licensed program')
+
              PARM       KWD(PTF      )          +
                         TYPE(*CHAR)             +
                         LEN( 7)                 +
@@ -207,8 +207,8 @@
                         SPCVAL(                 +
                           (*SAME      )         +
                           (*BLANK ' ' ))        +
-                        PROMPT('PTF number')                                              /* RADD */
-                                                                                          /* RADD */
+                        PROMPT('PTF number')
+
              PARM       KWD(APAR     )          +
                         TYPE(*CHAR)             +
                         LEN( 6)                 +
@@ -217,7 +217,7 @@
                         SPCVAL(                 +
                           (*SAME      )         +
                           (*BLANK ' ' ))        +
-                        PROMPT('APAR ID')                                                 /* RADD */
+                        PROMPT('APAR ID')
 
              PARM       KWD(USRDFNATR)          +
                         TYPE(*CHAR)             +
@@ -227,7 +227,7 @@
                         SPCVAL(                 +
                           (*SAME      )         +
                           (*BLANK ' ' ))        +
-                        PROMPT('User-defined attribute')                                  /* RADD */
+                        PROMPT('User-defined attribute')
 
 QUAL1:       QUAL       TYPE(*NAME)             +
                         LEN(10)                 +
@@ -238,21 +238,21 @@ QUAL1:       QUAL       TYPE(*NAME)             +
                         SPCVAL(                 +
                           (*LIBL )              +
                           (*CURLIB ))           +
-                        PROMPT('Library')                                                 /* RADD */
-                                                                                          /* RADD */
- /* ... SRCDATE keyword dependencies.   */                                                /* RADD */
+                        PROMPT('Library')
+
+ /* ... SRCDATE keyword dependencies.   */
              DEP        CTL(&SRCDATE *EQ 0000001)   +
                         PARM((&SRCF    *NE ' ')     +
                              (&SRCFLIB *NE ' ')     +
                              (&SRCMBR  *NE ' '))    +
                         NBRTRUE(*ALL )              +
-                        MSGID(COA0001)                                                    /* RADD */
+                        MSGID(COA0001)
 
- /* ... SRCTIME keyword dependencies.   */                                                /* RADD */
+ /* ... SRCTIME keyword dependencies.   */
              DEP        CTL(&SRCTIME *EQ 000001)    +
                         PARM((&SRCF    *NE ' ')     +
                              (&SRCFLIB *NE ' ')     +
                              (&SRCMBR  *NE ' '))    +
                         NBRTRUE(*ALL )              +
-                        MSGID(COA0001)                                                    /* RADD */
-                                                                                          /* RADD */
+                        MSGID(COA0001)
+
