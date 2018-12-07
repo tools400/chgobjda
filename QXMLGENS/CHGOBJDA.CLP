@@ -18,7 +18,17 @@
 /* ---------------------------------- */
 /*  Deploy source member              */
 /* ---------------------------------- */
-             XMLGENMBR  XMBR(CHGOBJDAG ) XMBRATR(CMD   ) +
+             XMLGENMBR  XMBR(A_INSTALL) XMBRATR(CLLE) +
+                          XFROMSRCF(QCHGOBJDA ) XFROMSRCL(TOOLS400) +
+                          XTOSRCF(QCHGOBJDA) XOBJTYPE(*PGM) +
+                          XGENCRT(*NO) XPARAM(*BLANK)
+
+             XMLGENMBR  XMBR(A_MSG_GER ) XMBRATR(CLP   ) +
+                          XFROMSRCF(QCHGOBJDA) XFROMSRCL(TOOLS400) +
+                          XTOSRCF(QCHGOBJDA) XOBJTYPE(*CMD) +
+                          XGENCRT(*NO) XPARAM(*BLANK)
+
+             XMLGENMBR  XMBR(A_MSG_ENG ) XMBRATR(CLP   ) +
                           XFROMSRCF(QCHGOBJDA) XFROMSRCL(TOOLS400) +
                           XTOSRCF(QCHGOBJDA) XOBJTYPE(*CMD) +
                           XGENCRT(*NO) XPARAM(*BLANK)
@@ -28,12 +38,17 @@
                           XTOSRCF(QCHGOBJDA) XOBJTYPE(*CMD) +
                           XGENCRT(*NO) XPARAM(*BLANK)
 
-             XMLGENMBR  XMBR(CHGOBJDAPG) XMBRATR(PNLGRP) +
+             XMLGENMBR  XMBR(CHGOBJDAG ) XMBRATR(CMD   ) +
+                          XFROMSRCF(QCHGOBJDA) XFROMSRCL(TOOLS400) +
+                          XTOSRCF(QCHGOBJDA) XOBJTYPE(*CMD) +
+                          XGENCRT(*NO) XPARAM(*BLANK)
+
+             XMLGENMBR  XMBR(CHGOBJDAPE) XMBRATR(PNLGRP) +
                           XFROMSRCF(QCHGOBJDA) XFROMSRCL(TOOLS400) +
                           XTOSRCF(QCHGOBJDA) XOBJTYPE(*PNLGRP) +
                           XGENCRT(*NO) XPARAM(*BLANK)
 
-             XMLGENMBR  XMBR(CHGOBJDAPE) XMBRATR(PNLGRP) +
+             XMLGENMBR  XMBR(CHGOBJDAPG) XMBRATR(PNLGRP) +
                           XFROMSRCF(QCHGOBJDA) XFROMSRCL(TOOLS400) +
                           XTOSRCF(QCHGOBJDA) XOBJTYPE(*PNLGRP) +
                           XGENCRT(*NO) XPARAM(*BLANK)
