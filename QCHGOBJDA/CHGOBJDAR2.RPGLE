@@ -13,7 +13,7 @@
       *                                                              *
       *  Kurzdokumentation :                                         *
       *                                                              *
-      *  Prompt Override Programm fÃ¼r Befehl CHGOBJDA                *
+      *  Prompt Override Programm für Befehl CHGOBJDA                *
       *                                                              *
       * ============================================================ *
       *  History:                                                    *

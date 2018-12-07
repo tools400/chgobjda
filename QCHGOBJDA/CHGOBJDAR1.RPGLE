@@ -13,7 +13,7 @@
       *                                                              *
       *  Kurzdokumentation :                                         *
       *                                                              *
-      *  BefehlsausfÃ¼hrungsprogramm fÃ¼r Befehl CHGOBJDA              *
+      *  Befehlsausführungsprogramm für Befehl CHGOBJDA              *
       *                                                              *
       *==============================================================*
       * >>PRE-COMPILER<<                                             *
@@ -500,7 +500,7 @@
      C                   Eval      pos     = pos  + 8 + keyLen
      C                   Enddo
       *
-      *  AnfÃ¼gen der neuen Informationen
+      *  Anfügen der neuen Informationen
      C                   If        pos >= %size(io_chgObjInf) - 4 - 4 - currLen
      C                   Return    cFalse
      C                   Else
