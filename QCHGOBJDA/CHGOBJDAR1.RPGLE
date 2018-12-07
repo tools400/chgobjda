@@ -42,7 +42,7 @@
      H DATFMT(*ISO )  TIMFMT(*ISO )
      H EXPROPTS(*RESDECPOS)
      H EXTBININT(*YES)
-     H COPYRIGHT('V1.1   - 23.06.2007 - mailto: thomas.raddatz@tools400.de')
+      /COPY QCHGOBJDA,COPYRIGHT
       *==============================================================*
       *
       *  Referenzfelder

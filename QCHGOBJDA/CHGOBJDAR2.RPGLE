@@ -51,6 +51,7 @@
      H DATFMT(*ISO )  TIMFMT(*ISO )
      H EXPROPTS(*RESDECPOS)
      H EXTBININT(*YES)
+      /COPY QCHGOBJDA,COPYRIGHT
       *==============================================================*
       *
       *  Referenzfelder

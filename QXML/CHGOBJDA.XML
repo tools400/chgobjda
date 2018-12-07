@@ -3307,7 +3307,7 @@ srccssid=  "01141">
       *                                                              *
       *  Kurzdokumentation :                                         *
       *                                                              *
-      *  Befehlsausführungsprogramm für Befehl CHGOBJDA              *
+      *  BefehlsausfÃ¼hrungsprogramm fÃ¼r Befehl CHGOBJDA              *
       *                                                              *
       *==============================================================*
       * >>PRE-COMPILER<<                                             *
@@ -3336,7 +3336,7 @@ srccssid=  "01141">
      H DATFMT(*ISO )  TIMFMT(*ISO )
      H EXPROPTS(*RESDECPOS)
      H EXTBININT(*YES)
-     H COPYRIGHT('V1.1   - 23.06.2007 - mailto: thomas.raddatz@tools400.de')
+      /COPY QCHGOBJDA,COPYRIGHT
       *==============================================================*
       *
       *  Referenzfelder
@@ -3602,7 +3602,7 @@ srccssid=  "01141">
      C                   Eval      srcMbr = objd0400.srcMbr
      C                   Endif
       *
-      *      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
+      *      ... Eintragen neuen SchlÃ¼ssel in neue Objektbeschreibung
      C                   If        not f_addKeyE(chgObjInf: cSrcFile:
      C                                           srcFile + srcLib + srcMbr)
      C                   Callp     p_sndEscMsg('COA0002': ' ')
@@ -3658,7 +3658,7 @@ srccssid=  "01141">
      C                   Eval      srcTime = i_srcTime
      C                   Endsl
       *
-      *      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
+      *      ... Eintragen neuen SchlÃ¼ssel in neue Objektbeschreibung
      C                   If        not f_addKeyE(chgObjInf: cSrcFDatTim:
      C                                           srcFDatTim            )
      C                   Callp     p_sndEscMsg('COA0002': ' ')
@@ -3672,7 +3672,7 @@ srccssid=  "01141">
      C                   Eval      objLvl    = objd0400.objLvl
      C                   Endif
       *
-      *      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
+      *      ... Eintragen neuen SchlÃ¼ssel in neue Objektbeschreibung
      C                   If        not f_addKeyE(chgObjInf: cObjLvl   :
      C                                           objLvl               )
      C                   Callp     p_sndEscMsg('COA0002': ' ')
@@ -3686,7 +3686,7 @@ srccssid=  "01141">
      C                   Eval      licPgm    = objd0400.licPgm
      C                   Endif
       *
-      *      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
+      *      ... Eintragen neuen SchlÃ¼ssel in neue Objektbeschreibung
      C                   If        not f_addKeyE(chgObjInf: cLicPgm   :
      C                                           licPgm               )
      C                   Callp     p_sndEscMsg('COA0002': ' ')
@@ -3700,7 +3700,7 @@ srccssid=  "01141">
      C                   Eval      ptf       = objd0400.ptf
      C                   Endif
       *
-      *      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
+      *      ... Eintragen neuen SchlÃ¼ssel in neue Objektbeschreibung
      C                   If        not f_addKeyE(chgObjInf: cPTF      :
      C                                           ptf                  )
      C                   Callp     p_sndEscMsg('COA0002': ' ')
@@ -3714,7 +3714,7 @@ srccssid=  "01141">
      C                   Eval      apar      = objd0400.apar
      C                   Endif
       *
-      *      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
+      *      ... Eintragen neuen SchlÃ¼ssel in neue Objektbeschreibung
      C                   If        not f_addKeyE(chgObjInf: cAPAR     :
      C                                           apar                 )
      C                   Callp     p_sndEscMsg('COA0002': ' ')
@@ -3728,14 +3728,14 @@ srccssid=  "01141">
      C                   Eval      usrDfnAtr = objd0400.usrDfnAtr
      C                   Endif
       *
-      *      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
+      *      ... Eintragen neuen SchlÃ¼ssel in neue Objektbeschreibung
      C                   If        not f_addKeyE(chgObjInf: cUsrDfnAtr:
      C                                           usrDfnAtr            )
      C                   Callp     p_sndEscMsg('COA0002': ' ')
      C                   Return
      C                   Endif
       *
-      *  Ändern der Objektbeschreibung
+      *  Ã ndern der Objektbeschreibung
      C                   Call      'QLICOBJD'
      C                   Parm                    retLibNme
      C                   Parm                    i_qObj
@@ -3794,7 +3794,7 @@ srccssid=  "01141">
      C                   Eval      pos     = pos  + 8 + keyLen
      C                   Enddo
       *
-      *  Anfügen der neuen Informationen
+      *  AnfÃ¼gen der neuen Informationen
      C                   If        pos >= %size(io_chgObjInf) - 4 - 4 - currLen
      C                   Return    cFalse
      C                   Else
@@ -3981,12 +3981,12 @@ srccssid=  "01141">
       *                                                              *
       *  Kurzdokumentation :                                         *
       *                                                              *
-      *  Prompt Override Programm für Befehl CHGOBJDA                *
+      *  Prompt Override Programm fÃ¼r Befehl CHGOBJDA                *
       *                                                              *
       * ============================================================ *
       *  History:                                                    *
       *                                                              *
-      *  Datum       Name          Änderung                          *
+      *  Datum       Name          Ã nderung                          *
       *  ----------  ------------  --------------------------------- *
       *  23.06.2007  Th.Raddatz    Fixed error in f_getDate() and    *
       *                            f_getTime() when objd0400.srcFDatTim
@@ -4019,6 +4019,7 @@ srccssid=  "01141">
      H DATFMT(*ISO )  TIMFMT(*ISO )
      H EXPROPTS(*RESDECPOS)
      H EXTBININT(*YES)
+      /COPY QCHGOBJDA,COPYRIGHT
       *==============================================================*
       *
       *  Referenzfelder
