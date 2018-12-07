@@ -1,7 +1,7 @@
       // ---------------------------------------------------------------
       //  Data structure for message ID: COA0001
 
-      //  Die Angaben zur Quellenteildatei sind unvollst√§ndig.
+      //  Die Angaben zur Quellenteildatei sind unvollst‰ndig.
 
      d COA0001         ds
       //  No replacement variables available!

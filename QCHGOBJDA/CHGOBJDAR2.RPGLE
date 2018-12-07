@@ -18,7 +18,7 @@
       * ============================================================ *
       *  History:                                                    *
       *                                                              *
-      *  Datum       Name          Ã„nderung                          *
+      *  Datum       Name          Ãnderung                          *
       *  ----------  ------------  --------------------------------- *
       *  23.06.2007  Th.Raddatz    Fixed error in f_getDate() and    *
       *                            f_getTime() when objd0400.srcFDatTim

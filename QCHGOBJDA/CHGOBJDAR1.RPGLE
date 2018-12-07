@@ -308,7 +308,7 @@
      C                   Eval      srcMbr = objd0400.srcMbr
      C                   Endif
       *
-      *      ... Eintragen neuen SchlÃ¼ssel in neue Objektbeschreibung
+      *      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
      C                   If        not f_addKeyE(chgObjInf: cSrcFile:
      C                                           srcFile + srcLib + srcMbr)
      C                   Callp     p_sndEscMsg('COA0002': ' ')
@@ -364,7 +364,7 @@
      C                   Eval      srcTime = i_srcTime
      C                   Endsl
       *
-      *      ... Eintragen neuen SchlÃ¼ssel in neue Objektbeschreibung
+      *      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
      C                   If        not f_addKeyE(chgObjInf: cSrcFDatTim:
      C                                           srcFDatTim            )
      C                   Callp     p_sndEscMsg('COA0002': ' ')
@@ -378,7 +378,7 @@
      C                   Eval      objLvl    = objd0400.objLvl
      C                   Endif
       *
-      *      ... Eintragen neuen SchlÃ¼ssel in neue Objektbeschreibung
+      *      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
      C                   If        not f_addKeyE(chgObjInf: cObjLvl   :
      C                                           objLvl               )
      C                   Callp     p_sndEscMsg('COA0002': ' ')
@@ -392,7 +392,7 @@
      C                   Eval      licPgm    = objd0400.licPgm
      C                   Endif
       *
-      *      ... Eintragen neuen SchlÃ¼ssel in neue Objektbeschreibung
+      *      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
      C                   If        not f_addKeyE(chgObjInf: cLicPgm   :
      C                                           licPgm               )
      C                   Callp     p_sndEscMsg('COA0002': ' ')
@@ -406,7 +406,7 @@
      C                   Eval      ptf       = objd0400.ptf
      C                   Endif
       *
-      *      ... Eintragen neuen SchlÃ¼ssel in neue Objektbeschreibung
+      *      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
      C                   If        not f_addKeyE(chgObjInf: cPTF      :
      C                                           ptf                  )
      C                   Callp     p_sndEscMsg('COA0002': ' ')
@@ -420,7 +420,7 @@
      C                   Eval      apar      = objd0400.apar
      C                   Endif
       *
-      *      ... Eintragen neuen SchlÃ¼ssel in neue Objektbeschreibung
+      *      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
      C                   If        not f_addKeyE(chgObjInf: cAPAR     :
      C                                           apar                 )
      C                   Callp     p_sndEscMsg('COA0002': ' ')
@@ -434,14 +434,14 @@
      C                   Eval      usrDfnAtr = objd0400.usrDfnAtr
      C                   Endif
       *
-      *      ... Eintragen neuen SchlÃ¼ssel in neue Objektbeschreibung
+      *      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
      C                   If        not f_addKeyE(chgObjInf: cUsrDfnAtr:
      C                                           usrDfnAtr            )
      C                   Callp     p_sndEscMsg('COA0002': ' ')
      C                   Return
      C                   Endif
       *
-      *  Ã„ndern der Objektbeschreibung
+      *  Ãndern der Objektbeschreibung
      C                   Call      'QLICOBJD'
      C                   Parm                    retLibNme
      C                   Parm                    i_qObj
