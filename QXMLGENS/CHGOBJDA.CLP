@@ -23,12 +23,17 @@
                           XTOSRCF(QCHGOBJDA) XOBJTYPE(*PGM) +
                           XGENCRT(*NO) XPARAM(*BLANK)
 
+             XMLGENMBR  XMBR(A_MSG_ENG ) XMBRATR(CLP   ) +
+                          XFROMSRCF(QCHGOBJDA) XFROMSRCL(TOOLS400) +
+                          XTOSRCF(QCHGOBJDA) XOBJTYPE(*CMD) +
+                          XGENCRT(*NO) XPARAM(*BLANK)
+
              XMLGENMBR  XMBR(A_MSG_GER ) XMBRATR(CLP   ) +
                           XFROMSRCF(QCHGOBJDA) XFROMSRCL(TOOLS400) +
                           XTOSRCF(QCHGOBJDA) XOBJTYPE(*CMD) +
                           XGENCRT(*NO) XPARAM(*BLANK)
 
-             XMLGENMBR  XMBR(A_MSG_ENG ) XMBRATR(CLP   ) +
+             XMLGENMBR  XMBR(A_README  ) XMBRATR(TXT   ) +
                           XFROMSRCF(QCHGOBJDA) XFROMSRCL(TOOLS400) +
                           XTOSRCF(QCHGOBJDA) XOBJTYPE(*CMD) +
                           XGENCRT(*NO) XPARAM(*BLANK)
