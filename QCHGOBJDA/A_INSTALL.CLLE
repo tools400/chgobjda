@@ -97,7 +97,7 @@
              ELSE       CMD(DO)
                 CHGVAR     VAR(&CRTMSGF) VALUE('A_MSG_GER')
                 CHGVAR     VAR(&PNLGRP ) VALUE('CHGOBJDAPG')
-                CHGVAR     VAR(&CMD    ) VALUE('CHGOBJDAE')
+                CHGVAR     VAR(&CMD    ) VALUE('CHGOBJDAG')
              ENDDO
 
              CRTMSGF    MSGF(&TOLIB/&MSGF) +
