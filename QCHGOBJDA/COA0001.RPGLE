@@ -1,9 +1,11 @@
-      // ---------------------------------------------------------------
-      //  Data structure for message ID: COA0001
+**free
+// ---------------------------------------------------------------
+//  Data structure for message ID: COA0001
 
-      //  Die Angaben zur Quellenteildatei sind unvollständig.
+//  Die Angaben zur Quellenteildatei sind unvollstndig.
 
-     d COA0001         ds
-      //  No replacement variables available!
-     d COA0001_SIZE    s             10I 0 inz(0000)
+dcl-ds COA0001;
+end-ds;
+//  No replacement variables available!
+dcl-s COA0001_SIZE int(10) inz(0000);
 

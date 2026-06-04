@@ -1,9 +1,11 @@
-      // ---------------------------------------------------------------
-      //  Data structure for message ID: COA0002
+**free
+// ---------------------------------------------------------------
+//  Data structure for message ID: COA0002
 
-      //  Zu viele Werte angegeben.
+//  Zu viele Werte angegeben.
 
-     d COA0002         ds
-      //  No replacement variables available!
-     d COA0002_SIZE    s             10I 0 inz(0000)
+dcl-ds COA0002;
+end-ds;
+//  No replacement variables available!
+dcl-s COA0002_SIZE int(10) inz(0000);
 

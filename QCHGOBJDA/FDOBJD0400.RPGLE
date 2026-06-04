@@ -1,64 +1,66 @@
-      /IF NOT DEFINED(objd0400_t)
-      /DEFINE objd0400_t
-      *===============================================================*
-      *  QUSROBJD API - OBJD0400                                      *
-      *===============================================================*
-      *
-     D objd0400_t      DS                  qualified           based(pDummy)
-      *    OBJD0100 ...
-     D  bytRet                       10I 0
-     D  bytAvl                       10I 0
-     D  name                         10A
-     D  lib                          10A
-     D  type                         10A
-     D  rtnLib                       10A
-     D  auxStgP                      10I 0
-     D  owner                        10A
-     D  domain                        2A
-     D  crtDatTim                    13A
-     D  chgDatTim                    13A
-      *    OBJD0200 ...
-     D  extObjAtr                    10A
-     D  text                         50A
-     D  srcFile                      10A
-     D  srcLib                       10A
-     D  srcMbr                       10A
-      *    OBJD0300 ...
-     D  srcFDatTim                   13A
-     D  savDatTim                    13A
-     D  rstDatTim                    13A
-     D  crtUsrPrf                    10A
-     D  crtSys                        8A
-     D  resDat                        7A
-     D  savSize                      10I 0
-     D  savSeqNbr                    10I 0
-     D  stg                          10A
-     D  savCmd                       10A
-     D  savVolID                     71A
-     D  savDev                       10A
-     D  savFName                     10A
-     D  savFLibName                  10A
-     D  savLbl                       17A
-     D  sysLvl                        9A
-     D  compiler                     16A
-     D  objLvl                        8A
-     D  usrChg                        1A
-     D  licPgm                       16A
-     D  ptf                          10A
-     D  apar                         10A
-      *    OBJD0400 ...
-     D  lastUseDat                    7A
-     D  useInfUpd                     1A
-     D  daysUseCnt                   10I 0
-     D  objSize                      10I 0
-     D  objSizeMlt                   10I 0
-     D  objCmpSts                     1A
-     D  alwChgPgm                     1A
-     D  chgByPgm                      1A
-     D  usrDfnAtr                    10A
-     D  aspOflw                       1A
-     D  savActDatTim                 13A
-     D  objAudVal                    10A
-     D  priGrp                       10A
-      *
-      /ENDIF
+**free
+/if NOT defined(objd0400_t)
+/define objd0400_t
+//===============================================================*
+//  QUSROBJD API - OBJD0400                                      *
+//===============================================================*
+
+dcl-ds objd0400_t qualified template;
+  //    OBJD0100 ...
+  bytRet       int(10);
+  bytAvl       int(10);
+  name         char(10);
+  lib          char(10);
+  type         char(10);
+  rtnLib       char(10);
+  auxStgP      int(10);
+  owner        char(10);
+  domain       char(2);
+  crtDatTim    char(13);
+  chgDatTim    char(13);
+  //    OBJD0200 ...
+  extObjAtr    char(10);
+  text         char(50);
+  srcFile      char(10);
+  srcLib       char(10);
+  srcMbr       char(10);
+  //    OBJD0300 ...
+  srcFDatTim   char(13);
+  savDatTim    char(13);
+  rstDatTim    char(13);
+  crtUsrPrf    char(10);
+  crtSys       char(8);
+  resDat       char(7);
+  savSize      int(10);
+  savSeqNbr    int(10);
+  stg          char(10);
+  savCmd       char(10);
+  savVolID     char(71);
+  savDev       char(10);
+  savFName     char(10);
+  savFLibName  char(10);
+  savLbl       char(17);
+  sysLvl       char(9);
+  compiler     char(16);
+  objLvl       char(8);
+  usrChg       char(1);
+  licPgm       char(16);
+  ptf          char(10);
+  apar         char(10);
+  //    OBJD0400 ...
+  lastUseDat   char(7);
+  useInfUpd    char(1);
+  daysUseCnt   int(10);
+  objSize      int(10);
+  objSizeMlt   int(10);
+  objCmpSts    char(1);
+  alwChgPgm    char(1);
+  chgByPgm     char(1);
+  usrDfnAtr    char(10);
+  aspOflw      char(1);
+  savActDatTim char(13);
+  objAudVal    char(10);
+  priGrp       char(10);
+end-ds;
+
+/endif

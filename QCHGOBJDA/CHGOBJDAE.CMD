@@ -21,7 +21,7 @@
 /* =================================================================== */
 /*  History:                                                           */
 /*                                                                     */
-/*  Datum       Name          Änderung                                 */
+/*  Datum       Name          nderung                                 */
 /*  ----------  ------------  ---------------------------------------  */
 /*  02.02.2006  Th.Raddatz    Adopted the prompt override enhancement  */
 /*                            contributed by Bill Reger. Thanks Bill!  */

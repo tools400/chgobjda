@@ -1,6 +1,6 @@
      /* ----------------------------------------------------------- */
-     /*   Cmd-ADDMSGD für Message-ID :   COA0001                    */
-     /* Die Angaben zur Quellenteildatei sind unvollständig.        */
+     /*   Cmd-ADDMSGD fr Message-ID :   COA0001                    */
+     /* Die Angaben zur Quellenteildatei sind unvollstndig.        */
      /* ----------------------------------------------------------- */
 
              PGM        PARM(&LI)
@@ -14,13 +14,13 @@
                 MSGID(COA0001) +
                 MSGF(&LI/CHGOBJDA) +
                 MSG(+
-'Die Angaben zur Quellenteildatei sind unvollständig.'                +
+'Die Angaben zur Quellenteildatei sind unvollstndig.'                +
                 ) +
                 SECLVL(+
 'Ursache . . . . :   Der Sonderwert *SRCMBR kann nur dann verwendet we-
-rden, wenn die Quellenteildatei vollständig qualifiziert worden ist. &-
+rden, wenn die Quellenteildatei vollstndig qualifiziert worden ist. &-
 N Fehlerbehebung  :   Tragen Sie die Informationen Quellendatei, Quell-
-enbibliothek und Quellenteildatei ein und führen Sie den Befehl erneut-
+enbibliothek und Quellenteildatei ein und fhren Sie den Befehl erneut-
  aus.'                                                                +
                 ) +
                 SEV(00) +
@@ -30,7 +30,7 @@ enbibliothek und Quellenteildatei ein und führen Sie den Befehl erneut-
                 /*  -EOF-  */
 
      /* ----------------------------------------------------------- */
-     /*   Cmd-ADDMSGD für Message-ID :   COA0002                    */
+     /*   Cmd-ADDMSGD fr Message-ID :   COA0002                    */
      /* Zu viele Werte angegeben.                                   */
      /* ----------------------------------------------------------- */
 
@@ -45,7 +45,7 @@ enbibliothek und Quellenteildatei ein und führen Sie den Befehl erneut-
                 ) +
                 SECLVL(+
 'Ursache . . . . :   Es wurden zu viele Werte angegeben. Ein internes -
-Arbeitsfeld ist nicht gross genug, um alle Werte verarbeiten zu können-
+Arbeitsfeld ist nicht gross genug, um alle Werte verarbeiten zu knnen-
 . &N Fehlerbehebung  :   Melden sie das Problem an den Entwickler.'   +
                 ) +
                 SEV(00) +
@@ -55,7 +55,7 @@ Arbeitsfeld ist nicht gross genug, um alle Werte verarbeiten zu können-
                 /*  -EOF-  */
 
      /* ----------------------------------------------------------- */
-     /*   Cmd-ADDMSGD für Message-ID :   COA0003                    */
+     /*   Cmd-ADDMSGD fr Message-ID :   COA0003                    */
      /* Teildatei &3 in Datei &2/&1 nicht gefunden.                 */
      /* ----------------------------------------------------------- */
 
@@ -71,7 +71,7 @@ Arbeitsfeld ist nicht gross genug, um alle Werte verarbeiten zu können-
                 SECLVL(+
 'Ursache . . . . :   Die Teildatei &3 konnte in der Datei &2/&1 nicht -
 gefunden werden. &N Fehlerbehebung  :   Geben Sie den richtigen Stando-
-rt der Teildatei &3 an und führen Sie den Befehl erneut aus.'         +
+rt der Teildatei &3 an und fhren Sie den Befehl erneut aus.'         +
                 ) +
                 SEV(00) +
                 FMT( +
@@ -84,7 +84,7 @@ rt der Teildatei &3 an und führen Sie den Befehl erneut aus.'         +
                 /*  -EOF-  */
 
      /* ----------------------------------------------------------- */
-     /*   Cmd-ADDMSGD für Message-ID :   COA0004                    */
+     /*   Cmd-ADDMSGD fr Message-ID :   COA0004                    */
      /* Objekt &1 in Bibliothek &2 Art &3 nicht gefunden.           */
      /* ----------------------------------------------------------- */
 
@@ -101,7 +101,7 @@ rt der Teildatei &3 an und führen Sie den Befehl erneut aus.'         +
 'Ursache . . . . :   Das Objekt &1 in Bibliothek &2 Art *&3 wurde nich-
 t gefunden. Der Objektname, der Bibliotheksname oder die Objektart ist-
  nicht korrekt. Wurde der Bibliotheksname nicht angegeben, befindet si-
-ch das Objekt möglicherweise in einer Bibliothek, die nicht in der Bib-
+ch das Objekt mglicherweise in einer Bibliothek, die nicht in der Bib-
 liotheksliste enthalten ist.'                                         +
                 ) +
                 SEV(00) +

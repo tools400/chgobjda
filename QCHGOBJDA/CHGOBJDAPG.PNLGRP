@@ -21,7 +21,7 @@
 .*=====================================================================*
 .*  History:                                                           *
 .*                                                                     *
-.*  Datum       Name          Änderung                                 *
+.*  Datum       Name          nderung                                 *
 .*  ----------  ------------  ---------------------------------------  *
 .*                                                                     *
 .*=====================================================================*
@@ -64,13 +64,13 @@
 .*  Primary help text for the command.
 .*****************************************************************
 :HELP NAME='CHGOBJDA'.
-Objektbeschr.Attribute ändern - Hilfe
+Objektbeschr.Attribute ndern - Hilfe
 :P.
-Der Befehl Objektbeschreibung ändern (CHGOBJD) ändert verschiedene
+Der Befehl Objektbeschreibung ndern (CHGOBJD) ndert verschiedene
 Attribute der Objektbeschreibung.
 :P.
-Obwohl der Befehl CHGOBJDA ursprünglich entwickelt worden ist, um
-die eingesetzte Change Management Software an eigene Bedürfnisse
+Obwohl der Befehl CHGOBJDA ursprnglich entwickelt worden ist, um
+die eingesetzte Change Management Software an eigene Bedrfnisse
 anzupassen, kann er auch ausserhalb der Change Management Software
 verwendet werden und gute Dienste leisten.
 :EHELP.
@@ -89,27 +89,27 @@ Objekt (OBJ) - Hilfe
 
 :P.
 Gibt den qualifizierten Namen des Objekts an, dessen
-Objektbeschreibung geändert wird. Wird kein Bibliotheksname angegeben,
+Objektbeschreibung gendert wird. Wird kein Bibliotheksname angegeben,
 wird das angegebene Objekt anhand der Bibliotheksliste (*LIBL)
 gesucht. Die Angabe des Bibliotheksnamens dient dazu,
-sicherzustellen, daß das korrekte Objekt angegeben wird.
+sicherzustellen, da das korrekte Objekt angegeben wird.
 
 :IMHELP name='COM/REQPARM'.
 :P.
-Mögliche Werte für :HP2.Objektname:EHP2. sind:
+Mgliche Werte fr :HP2.Objektname:EHP2. sind:
 
 :PARML.
 :PT.:PV.Objektname:EPV.
-:PD.Den Namen des zu ändernden Objekts angeben.
+:PD.Den Namen des zu ndernden Objekts angeben.
 :EPARML.
 :P.
 
-Gültige Bibliothekswerte sind:
+Gltige Bibliothekswerte sind:
 
 :PARML.
 :PT.:PK DEF.*LIBL:EPK.
 :PD.Alle Bibliotheken in der Bibliotheksliste des Jobs werden
-durchsucht, bis die erste Übereinstimmung gefunden wird.
+durchsucht, bis die erste bereinstimmung gefunden wird.
 :PT.:PV.*CURLIB:EPV.
 :PD.Das Objekt wird mit Hilfe der aktuellen Jobbibliothek gesucht.
 Ist keine Bibliothek als aktuelle Jobbibliothek angegeben, wird
@@ -128,10 +128,10 @@ Objektart (OBJTYPE) - Hilfe
 :XH3.Objektart (OBJTYPE)
 
 :P.
-Gibt die Objektart des Objekts an, das geändert werden soll. Um eine
-vollständige Liste der Objektarten zu erhalten, den
-Positionsanzeiger in das Feld für Objektart (Parameter OBJTYPE)
-bewegen und die Taste F4 drücken.
+Gibt die Objektart des Objekts an, das gendert werden soll. Um eine
+vollstndige Liste der Objektarten zu erhalten, den
+Positionsanzeiger in das Feld fr Objektart (Parameter OBJTYPE)
+bewegen und die Taste F4 drcken.
 
 :IMHELP name='COM/REQPARM'.
 :P.
@@ -139,7 +139,7 @@ bewegen und die Taste F4 drücken.
 
 :PARML.
 :PT.:PV.Objektart:EPV.
-:PD.Den vordefinierten Wert angegeben, der die zu ändernde Objektart
+:PD.Den vordefinierten Wert angegeben, der die zu ndernde Objektart
 bezeichnet.
 :EPARML.
 :EHELP.
@@ -153,7 +153,7 @@ Quellendatei (SRCF) - Hilfe
 :XH3.Quellendatei (SRCF)
 
 :P.
-Name der Quellendatei, welche die Quellenteildatei enthält, aus
+Name der Quellendatei, welche die Quellenteildatei enthlt, aus
 der das Objekt erstellt worden ist.
 
 :IMHELP name='COM/OPTPARM'.
@@ -162,11 +162,11 @@ der das Objekt erstellt worden ist.
 
 :PARML.
 :PT.:PK DEF.*SAME:EPK.
-:PD.Der Name der Quellendatei bleibt unverändert.
+:PD.Der Name der Quellendatei bleibt unverndert.
 :PT.:PV.*BLANK:EPV.
 :PD.Es ist kein Name einer Quellendatei angegeben.
 :PT.:PV.Quellendatei:EPV.
-:PD.Name der Quellendatei, welche die Quellenteildatei enthält, aus
+:PD.Name der Quellendatei, welche die Quellenteildatei enthlt, aus
 der das Objekt erstellt worden ist.
 :EPARML.
 :EHELP.
@@ -180,7 +180,7 @@ Quellenbibliothek (SRCFLIB) - Hilfe
 :XH3.Quellenbibliothek (SRCFLIB)
 
 :P.
-Name der Bibliothek, welche die Quellendatei enthält.
+Name der Bibliothek, welche die Quellendatei enthlt.
 
 :IMHELP name='COM/OPTPARM'.
 :P.
@@ -188,11 +188,11 @@ Name der Bibliothek, welche die Quellendatei enthält.
 
 :PARML.
 :PT.:PK DEF.*SAME:EPK.
-:PD.Der Name der Quellenbibliothek bleibt unverändert.
+:PD.Der Name der Quellenbibliothek bleibt unverndert.
 :PT.:PV.*BLANK:EPV.
 :PD.Es ist kein Name einer Quellenbibliothek angegeben.
 :PT.:PV.Quellenbibliothek:EPV.
-:PD.Name der Bibliothek, welche die Quellendatei enthält.
+:PD.Name der Bibliothek, welche die Quellendatei enthlt.
 :EPARML.
 :EHELP.
 
@@ -213,7 +213,7 @@ Name der Quellenteildatei, aus der das Objekt erstellt worden ist.
 
 :PARML.
 :PT.:PK DEF.*SAME:EPK.
-:PD.Der Name der Quellenteildatei bleibt unverändert.
+:PD.Der Name der Quellenteildatei bleibt unverndert.
 :PT.:PV.*BLANK:EPV.
 :PD.Es ist kein Name einer Quellenteildatei angegeben.
 :PT.:PV.Quellenteildatei:EPV.
@@ -231,7 +231,7 @@ Datum Quellenteildatei (SRCDATE) - Hilfe
 
 :P.
 Bei einer physischen Quellenteildtei ist dies das Datum, an dem der
-Dateiinhalt zuletzt geändert wurde.
+Dateiinhalt zuletzt gendert wurde.
 
 :IMHELP name='COM/OPTPARM'.
 :P.
@@ -239,12 +239,12 @@ Dateiinhalt zuletzt geändert wurde.
 
 :PARML.
 :PT.:PK DEF.*SAME:EPK.
-:PD.Das Datum der letzten Änderung bleibt unverändert.
+:PD.Das Datum der letzten nderung bleibt unverndert.
 :PT.:PV.*SRCMBR:EPV.
-:PD.Das Datum der letzen Änderung wird der im Parameter
+:PD.Das Datum der letzen nderung wird der im Parameter
 :HP2.Quellenteildatei:EHP2. angegebenen Teildatei entnommen.
 :PT.:PV.Datum:EPV.
-:PD.Datum der letzen Änderung des Dateiinhalts.
+:PD.Datum der letzen nderung des Dateiinhalts.
 :EPARML.
 :EHELP.
 
@@ -258,7 +258,7 @@ Uhrzeit Quellenteildatei (SRCTIME) - Hilfe
 
 :P.
 Bei einer physischen Quellenteildtei ist dies die Uhrzeit, an dem der
-Dateiinhalt zuletzt geändert wurde.
+Dateiinhalt zuletzt gendert wurde.
 
 :IMHELP name='COM/OPTPARM'.
 :P.
@@ -266,12 +266,12 @@ Dateiinhalt zuletzt geändert wurde.
 
 :PARML.
 :PT.:PK DEF.*SAME:EPK.
-:PD.Die Uhrzeit der letzten Änderung bleibt unverändert.
+:PD.Die Uhrzeit der letzten nderung bleibt unverndert.
 :PT.:PV.*SRCMBR:EPV.
-:PD.Die Uhrzeit der letzen Änderung wird der im Parameter
+:PD.Die Uhrzeit der letzen nderung wird der im Parameter
 :HP2.Quellenteildatei:EHP2. angegebenen Teildatei entnommen.
 :PT.:PV.Uhrzeit:EPV.
-:PD.Uhrzeit der letzen Änderung des Dateiinhalts.
+:PD.Uhrzeit der letzen nderung des Dateiinhalts.
 :EPARML.
 :EHELP.
 
@@ -285,7 +285,7 @@ Objektsteuerstufe (OBJLVL) - Hilfe
 
 :P.
 Die Objektsteuerstufe eines Objekts sollte aus einer eindeutigen
-Ident-Nummer bestehen, die mit jeder Änderung des Objects geändert
+Ident-Nummer bestehen, die mit jeder nderung des Objects gendert
 werden sollte.
 :P.
 Die Change Management Software benutzt die Objektsteuerstufe zur
@@ -297,7 +297,7 @@ Speicherung der Task-Nummer, der das Objekt zugeordnet war.
 
 :PARML.
 :PT.:PK DEF.*SAME:EPK.
-:PD.Die Objektsteuerstufe bleibt unverändert.
+:PD.Die Objektsteuerstufe bleibt unverndert.
 :PT.:PV.*BLANK:EPV.
 :PD.Es ist keine Objektsteuerstufe angegeben.
 :PT.:PV.Objektsteuerstufe:EPV.
@@ -315,7 +315,7 @@ Lizenzprogramm (LICPGM) - Hilfe
 
 :P.
 Name, Versionsstufe, Releasestufe und Modifikationsstufe
-des Lizenzprogramms, zu dem das Objekt gehört.
+des Lizenzprogramms, zu dem das Objekt gehrt.
 :P.
 :LINES.
 Stelle  1- 7:  Programmkenunng
@@ -339,12 +339,12 @@ Stelle  5- 7:  Modifikationsstufe  (*MINOR)
 
 :PARML.
 :PT.:PK DEF.*SAME:EPK.
-:PD.Die Angaben zum Lizenzprogramm bleiben unverändert.
+:PD.Die Angaben zum Lizenzprogramm bleiben unverndert.
 :PT.:PV.*BLANK:EPV.
 :PD.Es ist kein Lizenzprogramm angegeben.
 :PT.:PV.Lizenzprogramm:EPV.
 :PD.Name, Versionsstufe, Releasestufe und Modifikationsstufe
-des Lizenzprogramms, zu dem das Objekt gehört.
+des Lizenzprogramms, zu dem das Objekt gehrt.
 :EPARML.
 :EHELP.
 
@@ -357,8 +357,8 @@ PTF-Nummer (PTF) - Hilfe
 :XH3.PTF-Nummer (PTF)
 
 :P.
-Nummer der vorläufigen Programmkorrektur die zur Erstellung
-des Objekts geführt hat.
+Nummer der vorlufigen Programmkorrektur die zur Erstellung
+des Objekts gefhrt hat.
 :P.
 Die Change Management Software benutzt die PTF-Nummer zur
 Speicherung der Form-Nummer, mit der das Objekt verbracht worden ist.
@@ -370,12 +370,12 @@ Speicherung der Form-Nummer, mit der das Objekt verbracht worden ist.
 
 :PARML.
 :PT.:PK DEF.*SAME:EPK.
-:PD.Die PTF-Nummer bleibt unverändert.
+:PD.Die PTF-Nummer bleibt unverndert.
 :PT.:PV.*BLANK:EPV.
 :PD.Es ist keine PTF-Nummer angegeben.
 :PT.:PV.PTF-Nummer:EPV.
-:PD.Nummer der vorläufigen Programmkorrektur die zur Erstellung
-des Objekts geführt hat.
+:PD.Nummer der vorlufigen Programmkorrektur die zur Erstellung
+des Objekts gefhrt hat.
 :EPARML.
 :EHELP.
 
@@ -389,10 +389,10 @@ APAR-Nummer (APAR) - Hilfe
 
 :P.
 APAR-ID (Authorized Problem Analysis Report ID) die
-zur Korrektur des Objekts geführt hat.
+zur Korrektur des Objekts gefhrt hat.
 :P.
 Die Change Management Software benutzt die APAR-ID zur
-Speicherung der Anwendung, zu der das Objekt gehört.
+Speicherung der Anwendung, zu der das Objekt gehrt.
 :P.
 :LINES.
 Stelle  1- 4:  Anwendung
@@ -406,12 +406,12 @@ Stelle  5- 6:  unbekannt
 
 :PARML.
 :PT.:PK DEF.*SAME:EPK.
-:PD.Die APAR-ID bleibt unverändert.
+:PD.Die APAR-ID bleibt unverndert.
 :PT.:PV.*BLANK:EPV.
 :PD.Es ist keine APAR-ID angegeben.
 :PT.:PV.APAR-ID:EPV.
 :PD.APAR-ID (Authorized Problem Analysis Report ID) die
-zur Korrektur des Objekts geführt hat.
+zur Korrektur des Objekts gefhrt hat.
 :EPARML.
 :EHELP.
 
@@ -424,11 +424,11 @@ Benutzerdefiniertes Attribut (USRDFNATR) - Hilfe
 :XH3.Benutzerdefiniertes Attribut (USRDFNATR)
 
 :P.
-Das benutzerdefinierte Attribute eines Objekts kann zur näheren
+Das benutzerdefinierte Attribute eines Objekts kann zur nheren
 Spezifizierung eines Objekts benutzt werden.
 :P.
 Die Change Management Software benutzt das benutzerdefinierte Attribut
-zur Speicherung des Type Codes, zu dem das Objekt gehört.
+zur Speicherung des Type Codes, zu dem das Objekt gehrt.
 :P.
 
 :IMHELP name='COM/OPTPARM'.
@@ -437,11 +437,11 @@ zur Speicherung des Type Codes, zu dem das Objekt gehört.
 
 :PARML.
 :PT.:PK DEF.*SAME:EPK.
-:PD.Das benutzerdefinierte Attribut bleibt unverändert.
+:PD.Das benutzerdefinierte Attribut bleibt unverndert.
 :PT.:PV.*BLANK:EPV.
 :PD.Es ist kein benutzerdefiniertes Attribut angegeben.
 :PT.:PV.Benutzerdefiniertes Attribut:EPV.
-:PD.Benutzerdefiniertes Attribut zur näheren Spezifizierung
+:PD.Benutzerdefiniertes Attribut zur nheren Spezifizierung
 des Objekts.
 :EPARML.
 :EHELP.
@@ -471,7 +471,7 @@ Dieser Parameter ist optional.
 .********************************************
 :HELP NAME='COM/VALUES'.
 :P.
-Mögliche Werte sind:
+Mgliche Werte sind:
 :EHELP.
 
 .*****************************************************************

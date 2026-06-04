@@ -1,11 +1,13 @@
-      // ---------------------------------------------------------------
-      //  Data structure for message ID: COA0004
+**free
+// ---------------------------------------------------------------
+//  Data structure for message ID: COA0004
 
-      //  Objekt &1 in Bibliothek &2 Art &3 nicht gefunden.
+//  Objekt &1 in Bibliothek &2 Art &3 nicht gefunden.
 
-     d COA0004         ds
-     d  COA00041                   0010A   inz(*BLANKS)
-     d  COA00042                   0010A   inz(*BLANKS)
-     d  COA00043                   0010A   inz(*BLANKS)
-     d COA0004_SIZE    s             10I 0 inz(0030)
+dcl-ds COA0004;
+  COA00041 char(0010) inz(*blanks);
+  COA00042 char(0010) inz(*blanks);
+  COA00043 char(0010) inz(*blanks);
+end-ds;
+dcl-s COA0004_SIZE int(10) inz(0030);
 

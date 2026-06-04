@@ -1,525 +1,517 @@
-      *==============================================================*
-      *                                                              *
-      *  (c) 2006, Bill Reger                                        *
-      *                                                              *
-      *  Bereich  : CHGOBJDA                                         *
-      *  Modul    : CHGOBJDAR2                                       *
-      *  Typ      : RPGLE                                            *
-      *  Programm : CHGOBJDAPO                                       *
-      *                                                              *
-      *  erstellt : Bill Reger                                       *
-      *                                                              *
-      *==============================================================*
-      *                                                              *
-      *  Kurzdokumentation :                                         *
-      *                                                              *
-      *  Prompt Override Programm für Befehl CHGOBJDA                *
-      *                                                              *
-      * ============================================================ *
-      *  History:                                                    *
-      *                                                              *
-      *  Datum       Name          Änderung                          *
-      *  ----------  ------------  --------------------------------- *
-      *  23.06.2007  Th.Raddatz    Fixed error in f_getDate() and    *
-      *                            f_getTime() when objd0400.srcFDatTim
-      *                            is empty.                         *
-      *                                                              *
-      *==============================================================*
-      * >>PRE-COMPILER<<                                             *
-      *                                                              *
-      *   >>CRTCMD<< CRTRPGMOD    MODULE(&LI/&OB) +                  *
-      *                           SRCFILE(&SL/&SF) +                 *
-      *                           SRCMBR(&SM);                       *
-      *                                                              *
-      *   >>COMPILE<<                                                *
-      *     >>PARM<< TRUNCNBR(*NO);                                  *
-      *     >>PARM<< DBGVIEW(*LIST);                                 *
-      *   >>END-COMPILE<<                                            *
-      *                                                              *
-      *   >>EXECUTE<<                                                *
-      *                                                              *
-      *   >>CMD<<    CRTPGM       PGM(&LI/CHGOBJDAPO) +              *
-      *                           MODULE(&LI/&OB) +                  *
-      *                           DETAIL(*BASIC) +                   *
-      *                           ACTGRP(*NEW);                      *
-      *                                                              *
-      * >>END-PRE-COMPILER<<                                         *
-      *==============================================================*
-     H DEBUG
-     H OPTION(*SRCSTMT : *NODEBUGIO)
-     H DECEDIT('0,') DATEDIT(*MDY.)
-     H DATFMT(*ISO )  TIMFMT(*ISO )
-     H EXPROPTS(*RESDECPOS)
-     H EXTBININT(*YES)
-      /COPY QCHGOBJDA,COPYRIGHT
-      *==============================================================*
-      *
-      *  Referenzfelder
-      /COPY QCHGOBJDA,FDERRCODE
-      /COPY QCHGOBJDA,FDMBRD0100
-      /COPY QCHGOBJDA,FDOBJD0400
-      *
-     D cymdhms_t       DS                  qualified  based(pDummy)
-     D  cymd                          7A
-     D  hms                           6A
-      *
-      *  Konstanten
-     D cQUOTE          C                   const('''')
-      *
-      *  Prototype
-     D CHGOBJDAP...
-     D                 PR                  EXTPGM('CHGOBJDAP')
-     D  gi_Cmd                       20A   const
-     D  gi_qObj                      20A   const
-     D  gi_objType                   10A   const
-     D  gi_String                 32767A   varying
-      *
-     D p_main...
-     D                 PR
-     D  i_Cmd                              value like(gi_Cmd      )
-     D  i_qObj                             value like(gi_qObj     )
-     D  i_objType                          value like(gi_objType  )
-     D  i_String                                 like(gi_String   )
-      *
-     D f_getDate...
-     D                 PR            16A   varying
-     D  i_cymdhms                          value  likeds(cymdhms_t)
-      *
-     D f_getTime...
-     D                 PR            16A   varying
-     D  i_cymdhms                          value  likeds(cymdhms_t)
-      *
-     D f_getLicPgm...
-     D                 PR            13A   varying
-     D  i_licPgm                     16A   value
-      *
-     D f_addParameter...
-     D                 PR                         like(gi_String  )
-     D  i_string                           value  like(gi_String  )
-     D  i_keyword                    10A   value  varying
-     D  i_value                     128A   value  varying
-      *
-     D p_sndEscMsg...
-     D                 PR
-     D  i_msgID                       7A   value
-     D  i_msgDta                    128A   value
-      *
-     D f_isApiError...
-     D                 PR              N
-     D  i_errCode                   272A   value
-      *
-     D f_newApiErrCode...
-     D                 PR           272A
-     D  i_monmsg                       N   value
-      *
-      *  Retrieve Object Description
-     d qusrobjd...
-     D                 PR                  extpgm('QUSROBJD')
-     D  rcvVar                    32767A         options(*varsize)
-     D  rcvVarLen                    10I 0 const
-     D  format                        8A   const
-     D  qObj                         20A   const
-     D  objType                      10A   const
-     D  errCode                   32767A         options(*varsize: *nopass)
-      *
-      *  Retrieve Member Description
-     d qusrmbrd...
-     D                 PR                  extpgm('QUSRMBRD')
-     D  rcvVar                    32767A         options(*varsize)
-     D  rcvVarLen                    10I 0 const
-     D  format                        8A   const
-     D  qFile                        20A   const
-     D  mbr                          10A   const
-     D  override                      1A   const
-     D  errCode                   32767A         options(*varsize: *nopass)
-      *
-      *  Convert Date and Time Format (QWCCVTDT) API
-     D QWCCVTDT...
-     D                 PR                  EXTPGM('QWCCVTDT')
-     D  i_inFormat                   10A   const
-     D  i_inVar                     256A   const options(*varsize)
-     D  i_outFormat                  10A   const
-     D  o_outVar                    256A         options(*varsize)
-     D  io_errCode                32767A         options(*varsize: *nopass)
-      *
-      *  Glaobal Constants
-     D cTrue           C                   const(*on)
-     D cFalse          C                   const(*off)
-      *
-     D cSame           C                   const('*SAME')
-     D cSameDate       C                   const('0000000')
-     D cSameTime       C                   const('000000')
-     D cSrcMbrDate     C                   const('0000001')
-     D cSrcMbrTime     C                   const('000001')
-      *
-     D cSrcFile        C                   const(1)
-     D cSrcFDatTim     C                   const(2)
-     D cObjLvl         C                   const(4)
-     D cLicPgm         C                   const(5)
-     D cPTF            C                   const(6)
-     D cAPAR           C                   const(7)
-     D cUsrDfnAtr      C                   const(9)
-      *
-      *==================================================================*
-      *  Program entry point
-      *==================================================================*
-      *
-     D CHGOBJDAP...
-     D                 PI
-     D  gi_Cmd                       20A   const
-     D  gi_qObj                      20A   const
-     D  gi_objType                   10A   const
-     D  gi_String                 32767A   varying
-      *-------------------------------------------------------------------
-      *
-     C                   Callp     p_main(gi_Cmd       :
-     C                                    gi_qObj      :
-     C                                    gi_objType   :
-     C                                    gi_String    )
-      *
-     C                   Eval      *inlr = *on
-      *
-      *==================================================================*
-      *  Housekeeping
-      *==================================================================*
-      *
-     P p_main...
-     P                 B
-      *
-     D p_main...
-     D                 PI
-     D  i_Cmd                              value like(gi_Cmd      )
-     D  i_qObj                             value like(gi_qObj     )
-     D  i_objType                          value like(gi_objType  )
-     D  i_String                                 like(gi_String   )
-      *
-      *  API error code
-     D errCode         DS                  likeds(errCode_t   ) inz
-      *
-      *  Qualified object name
-     D qObj            DS
-     D  qObj_name                    10A   inz
-     D  qObj_lib                     10A   inz
-      *
-      *  Object description OBJD0400
-     D OBJD0400        DS                  likeds(objd0400_t  ) inz
-      *
-      *  Member description MBRD0100
-     D MBRD0100        DS                  likeds(mbrd0100_t  ) inz
-      *
-      *  Declare Working Variables
-     D chgObjInf       S           1024A   inz(*ALLx'00')
-     D retLibNme       S             10A   inz
-      *  Is the member description available?
-     D isMbrDscAvl     S               N   inz(cFalse)
-      *
-      *  Message Description structures
-     D COA0003         DS
-     D  COA00031                    010A   INZ(*BLANKS)
-     D  COA00032                    010A   INZ(*BLANKS)
-     D  COA00033                    010A   INZ(*BLANKS)
-     D COA0003#        S              8B 0 INZ(0030)
-      *
-     D COA0004         DS
-     D  COA00041                    010A   INZ(*BLANKS)
-     D  COA00042                    010A   INZ(*BLANKS)
-     D  COA00043                    010A   INZ(*BLANKS)
-     D COA0004#        S              8B 0 INZ(0030)
-      *-------------------------------------------------------------------
-      *
-      *  Get the current Object Description.
-     C                   Eval      errCode    = f_newApiErrCode(cTrue)
-     C                   Callp     qusrobjd(OBJD0400        :
-     C                                      %size(OBJD0400) :
-     C                                      'OBJD0400'      :
-     C                                      i_qObj          :
-     C                                      i_objType       :
-     C                                      errCode         )
-      *
-     C                   If        f_isApiError(errCode)
-     C                   Eval      qObj = i_qObj
-     C                   Clear                   COA0004
-     C                   Eval      COA00041 = qObj_name
-     C                   Eval      COA00042 = qObj_lib
-     C                   Eval      COA00043 = i_objType
-     C                   Callp     p_sndEscMsg('COA0004': COA0004)
-     C                   Endif
-      *
-      *  Construct the POP Keyword String.
-      *
-     C                   Eval      i_string = f_addParameter(''         :
-     C                                                       'SRCF'     :
-     C                                           %trimR(objd0400.srcFile))
-     C                   Eval      i_string = f_addParameter(i_string   :
-     C                                                       'SRCFLIB'  :
-     C                                           %trimR(objd0400.srcLib ))
-     C                   Eval      i_string = f_addParameter(i_string   :
-     C                                                       'SRCMBR'   :
-     C                                           %trimR(objd0400.srcMbr ))
-     C                   Eval      i_string = f_addParameter(i_string   :
-     C                                                       'SRCDATE'  :
-     C                                           f_getDate(objd0400.srcFDatTim))
-     C                   Eval      i_string = f_addParameter(i_string   :
-     C                                                       'SRCTIME'  :
-     C                                           f_getTime(objd0400.srcFDatTim))
-     C                   Eval      i_string = f_addParameter(i_string   :
-     C                                                       'OBJLVL'   :
-     C                                           %TrimR(objd0400.objLvl   ))
-     C                   Eval      i_string = f_addParameter(i_string   :
-     C                                                       'LICPGM'   :
-     C                                           f_getLicPgm(objd0400.licPgm))
-     C                   Eval      i_string = f_addParameter(i_string   :
-     C                                                       'PTF'      :
-     C                                           %TrimR(objd0400.ptf      ))
-     C                   Eval      i_string = f_addParameter(i_string   :
-     C                                                       'APAR'     :
-     C                                           %TrimR(objd0400.apar     ))
-     C                   Eval      i_string = f_addParameter(i_string   :
-     C                                                       'USRDFNATR':
-     C                                           %TrimR(objd0400.usrDfnAtr))
-      *
-      *
-     C                   Return
-      *
-     P p_main...
-     P                 E
-      *
-      *==================================================================*
-      *  get date from cymd date
-      *==================================================================*
-      *
-     P f_getDate...
-     P                 B
-      *
-     D f_getDate...
-     D                 PI            16A   varying
-     D  i_cymdhms                          value  likeds(cymdhms_t)
-      *
-     D rtnDate         S             16A   varying   inz
-      *
-     D date            S               D   inz
-      *-------------------------------------------------------------------
-      *
-     C                   If        i_cymdhms.hms <> ''
-     C                   Eval      date = %date(i_cymdhms.cymd: *CYMD0)
-     C                   Eval      rtnDate = %trimR(%char(date: *JOBRUN0))
-     C                   Else
-     C                   Eval      rtnDate = ''
-     C                   Endif
-      *
-     C                   Return    rtnDate
-      *
-     P f_getDate...
-     P                 E
-      *
-      *==================================================================*
-      *  get time from cymd date
-      *==================================================================*
-      *
-     P f_getTime...
-     P                 B
-      *
-     D f_getTime...
-     D                 PI            16A   varying
-     D  i_cymdhms                          value  likeds(cymdhms_t)
-      *
-     D rtnTime         S             16A   varying   inz
-      *
-     D time            S               T   inz
-      *-------------------------------------------------------------------
-      *
-     C                   If        i_cymdhms.hms <> ''
-     C                   Eval      time = %time(i_cymdhms.hms: *HMS0)
-     C                   Eval      rtnTime = %trimR(%char(time: *JOBRUN0))
-     C                   Else
-     C                   Eval      rtnTime = ''
-     C                   Endif
-      *
-     C                   Return    rtnTime
-      *
-     P f_getTime...
-     P                 E
-      *
-      *==================================================================*
-      *  get/compress licensed program information
-      *==================================================================*
-      *  Switch prompt value to '*SAME' if the license program
-      *  information ecceeds 13 character.
-      *  Regarding to the description of the QLICOBJD API we
-      *  we can only change 13 characters of the license program
-      *  information, whereas IBM license programs show a
-      *  16-character license program information.
-      *==================================================================*
-      *
-     P f_getLicPgm...
-     P                 B
-      *
-     D f_getLicPgm...
-     D                 PI            13A   varying
-     D  i_licPgm                     16A   value
-      *
-     D rtnLicPgm       S             13A   varying inz
-      *
-     D licPgm          DS                  qualified
-     D  name                   1      7A
-     D  ibmLicInf              8     10A
-     D  vrm                   11     16A
-      *-------------------------------------------------------------------
-      *
-     C                   Eval      licPgm = i_licPgm
-      *
-     C                   If        licPgm.ibmLicInf = ''
-     C                   Eval      rtnLicPgm = licPgm.name + licPgm.vrm
-     C                   Else
-     C                   Eval      rtnLicPgm = '*SAME'
-     C                   Endif
-      *
-     C                   Return    rtnLicPgm
-      *
-     P f_getLicPgm...
-     P                 E
-      *
-      *==================================================================*
-      *  add parameter to string
-      *==================================================================*
-      *
-     P f_addParameter...
-     P                 B
-      *
-     D f_addParameter...
-     D                 PI                         like(gi_String  )
-     D  i_string                           value  like(gi_String  )
-     D  i_keyword                    10A   value  varying
-     D  i_value                     128A   value  varying
-      *
-     D rtnString       S                   like(gi_String  ) inz
-     D quote           S              1A   varying           inz
-      *-------------------------------------------------------------------
-      *
-     C                   Eval      rtnString = i_string
-     C                   If        rtnString <> ''
-     C                   Eval      rtnString = rtnString + ' '
-     C                   Endif
-      *
-     C                   If        %scan(' ': %trimR(i_value)) > 0
-     C                   Eval      quote = cQuote
-     C                   Else
-     C                   Eval      quote = ''
-     C                   Endif
-      *
-     C                   Eval      rtnString = rtnString + '?<'
-     C                                                   + %trimR(i_keyword)
-     C                                                   + '('
-     C                                                   + quote
-     C                                                   + i_value
-     C                                                   + quote
-     C                                                   + ')'
-      *
-     C                   Return    rtnString
-      *
-     P f_addParameter...
-     P                 E
-      *
-      *==================================================================*
-      *  send escape message
-      *==================================================================*
-      *
-     P p_sndEscMsg...
-     P                 B
-      *
-     D p_sndEscMsg...
-     D                 PI
-     D  i_msgID                       7A   value
-     D  i_msgDta                    128A   value
-      *
-      *  Declare variables
-     D qMsgF           DS
-     D  msgF                         10A   inz('CHGOBJDA')
-     D  msgL                         10A   inz('*LIBL  ')
-     D msgDtaLen       S             10I 0 inz(%size(i_msgDta))
-     D msgType         S             10A   inz('*ESCAPE')
-     D callStckE       S             10A   inz('*CTLBDY')
-     D callStckC       S             10I 0 inz(1)
-     D msgKey          S              4A   inz
-     D errCode         DS                  likeds(errCode_t ) inz
-      *-------------------------------------------------------------------
-      *
-     C                   Eval      errCode    = f_newApiErrCode(cFalse)
-      *
-     C                   Call      'QMHSNDPM'
-     C                   Parm                    i_msgID
-     C                   Parm                    qMsgF
-     C                   Parm                    i_msgDta
-     C                   Parm                    msgDtaLen
-     C                   Parm                    msgType
-     C                   Parm                    callStckE
-     C                   Parm                    callStckC
-     C                   Parm                    msgKey
-     C                   Parm                    errCode
-      *
-     P p_sndEscMsg...
-     P                 E
-      *
-      *==================================================================*
-      *  Is API Error?
-      * -----------------------------------------------------------------
-      *    cTrue  - error
-      *    cFalse - no error
-      *==================================================================*
-      *
-     P f_isApiError...
-     P                 B
-      *
-     D f_isApiError...
-     D                 PI              N
-     D  i_errCode                   272A   value
-      *
-      *  Declare logical variable
-     D o_isError       S               N   inz(cFalse)
-      *
-      *  Declare API error code
-     D errCode         DS                  likeds(errCode_t )
-     D                                     based(pErrCode   )
-      *-------------------------------------------------------------------
-      *
-     C                   Eval      pErrCode = %addr(i_errCode)
-      *
-     C                   If        errCode.bytAvl = 0
-     C                   Eval      o_isError = cFalse
-     C                   Else
-     C                   Eval      o_isError = cTrue
-     C                   Endif
-      *
-     C                   Return    o_isError
-      *
-     P f_isApiError...
-     P                 E
-      *
-      *==================================================================*
-      *  API error code data structure
-      *==================================================================*
-      *
-     P f_newApiErrCode...
-     P                 B
-      *
-     D f_newApiErrCode...
-     D                 PI           272A
-     D  i_monmsg                       N   value
-      *
-      *  Declare working Function
-     D errCode         DS                  likeds(errCode_t ) inz
-      *-------------------------------------------------------------------
-      *
-     C                   Clear                   errCode
-      *
-     C                   If        i_monMsg = cTrue
-     C                   Eval      errCode.bytPrv = %size(errCode)
-     C                   Else
-     C                   Eval      errCode.bytPrv = 0
-     C                   Endif
-      *
-     C                   Return    errCode
-      *
-     P f_newApiErrCode...
-     P                 E
-      *
+**free
+//==============================================================*
+//                                                              *
+//  (c) 2006, Bill Reger                                        *
+//                                                              *
+//  Bereich  : CHGOBJDA                                         *
+//  Modul    : CHGOBJDAR2                                       *
+//  Typ      : RPGLE                                            *
+//  Programm : CHGOBJDAPO                                       *
+//                                                              *
+//  erstellt : Bill Reger                                       *
+//                                                              *
+//==============================================================*
+//                                                              *
+//  Kurzdokumentation :                                         *
+//                                                              *
+//  Prompt Override Programm fr Befehl CHGOBJDA                *
+//                                                              *
+// ============================================================ *
+//  History:                                                    *
+//                                                              *
+//  Datum       Name          nderung                          *
+//  ----------  ------------  --------------------------------- *
+//  23.06.2007  Th.Raddatz    Fixed error in f_getDate() and    *
+//                            f_getTime() when objd0400.srcFDatTim
+//                            is empty.                         *
+//                                                              *
+//==============================================================*
+// >>PRE-COMPILER<<                                             *
+//                                                              *
+//   >>CRTCMD<< CRTRPGMOD    MODULE(&LI/&OB) +                  *
+//                           SRCFILE(&SL/&SF) +                 *
+//                           SRCMBR(&SM);                       *
+//                                                              *
+//   >>COMPILE<<                                                *
+//     >>PARM<< TRUNCNBR(*NO);                                  *
+//     >>PARM<< DBGVIEW(*LIST);                                 *
+//   >>END-COMPILE<<                                            *
+//                                                              *
+//   >>EXECUTE<<                                                *
+//                                                              *
+//   >>CMD<<    CRTPGM       PGM(&LI/CHGOBJDAPO) +              *
+//                           MODULE(&LI/&OB) +                  *
+//                           DETAIL(*BASIC) +                   *
+//                           ACTGRP(*NEW);                      *
+//                                                              *
+// >>END-PRE-COMPILER<<                                         *
+//==============================================================*
+ctl-opt debug option(*srcstmt: *nodebugio);
+ctl-opt decedit('0,') datedit(*MDY.);
+ctl-opt datfmt(*iso) timfmt(*iso);
+ctl-opt expropts(*resdecpos);
+ctl-opt extbinint(*yes);
+/copy QCHGOBJDA,COPYRIGHT
+//==============================================================*
+
+//  Referenzfelder
+/copy QCHGOBJDA,FDERRCODE
+/copy QCHGOBJDA,FDMBRD0100
+/copy QCHGOBJDA,FDOBJD0400
+
+dcl-ds cymdhms_t qualified template;
+  cymd char(7);
+  hms  char(6);
+end-ds;
+
+//  Konstanten
+dcl-c cQUOTE '''';
+
+//  Prototype
+dcl-pr CHGOBJDAP extpgm('CHGOBJDAP');
+  gi_Cmd     char(20) const;
+  gi_qObj    char(20) const;
+  gi_objType char(10) const;
+  gi_String  varchar(32767);
+end-pr;
+
+dcl-pr p_main;
+  i_Cmd     like(gi_Cmd) value;
+  i_qObj    like(gi_qObj) value;
+  i_objType like(gi_objType) value;
+  i_String  like(gi_String);
+end-pr;
+
+dcl-pr f_getDate varchar(16);
+  i_cymdhms likeds(cymdhms_t) value;
+end-pr;
+
+dcl-pr f_getTime varchar(16);
+  i_cymdhms likeds(cymdhms_t) value;
+end-pr;
+
+dcl-pr f_getLicPgm varchar(13);
+  i_licPgm char(16) value;
+end-pr;
+
+dcl-pr f_addParameter like(gi_String);
+  i_string  like(gi_String) value;
+  i_keyword varchar(10) value;
+  i_value   varchar(128) value;
+end-pr;
+
+dcl-pr p_sndEscMsg;
+  i_msgID  char(7) value;
+  i_msgDta char(128) value;
+end-pr;
+
+dcl-pr f_isApiError ind;
+  i_errCode char(272) value;
+end-pr;
+
+dcl-pr f_newApiErrCode char(272);
+  i_monmsg ind value;
+end-pr;
+
+//  Retrieve Object Description
+dcl-pr qusrobjd extpgm('QUSROBJD');
+  rcvVar    char(32767) options(*varsize);
+  rcvVarLen int(10) const;
+  format    char(8) const;
+  qObj      char(20) const;
+  objType   char(10) const;
+  errCode   char(32767) options(*varsize: *nopass);
+end-pr;
+
+//  Retrieve Member Description
+dcl-pr qusrmbrd extpgm('QUSRMBRD');
+  rcvVar    char(32767) options(*varsize);
+  rcvVarLen int(10) const;
+  format    char(8) const;
+  qFile     char(20) const;
+  mbr       char(10) const;
+  override  char(1) const;
+  errCode   char(32767) options(*varsize: *nopass);
+end-pr;
+
+//  Convert Date and Time Format (QWCCVTDT) API
+dcl-pr QWCCVTDT extpgm('QWCCVTDT');
+  i_inFormat  char(10) const;
+  i_inVar     char(256) options(*varsize) const;
+  i_outFormat char(10) const;
+  o_outVar    char(256) options(*varsize);
+  io_errCode  char(32767) options(*varsize: *nopass);
+end-pr;
+
+//  Send Program Message (QMHSNDPM) API
+dcl-pr qmhsndpm extpgm('QMHSNDPM');
+  i_msgid      char(7) const;
+  i_qmsgf      char(20) const;
+  i_msgdata    char(32767) options(*varsize) const;
+  i_length     int(10) const;
+  i_msgtype    char(10) const;
+  i_callstke   char(256) const;
+  i_callstkc   int(10) const;
+  o_msgkey     char(4);
+  io_errcode   char(32767) options(*varsize);
+  i_lenstke    int(10) options(*nopass) const; // optGrp 1
+  i_callstkeq  char(20) options(*nopass) const;
+  i_wait       int(10) options(*nopass) const;
+  i_callstkedt char(10) options(*nopass) const; // optGrp 2
+  i_ccsid      int(10) options(*nopass) const;
+end-pr;
+
+//  Glaobal Constants
+dcl-c cTrue *on;
+dcl-c cFalse *off;
+
+dcl-c cSame '*SAME';
+dcl-c cSameDate '0000000';
+dcl-c cSameTime '000000';
+dcl-c cSrcMbrDate '0000001';
+dcl-c cSrcMbrTime '000001';
+
+dcl-c cSrcFile 1;
+dcl-c cSrcFDatTim 2;
+dcl-c cObjLvl 4;
+dcl-c cLicPgm 5;
+dcl-c cPTF 6;
+dcl-c cAPAR 7;
+dcl-c cUsrDfnAtr 9;
+
+//==================================================================*
+//  Program entry point
+//==================================================================*
+dcl-pi CHGOBJDAP;
+  gi_Cmd     char(20) const;
+  gi_qObj    char(20) const;
+  gi_objType char(10) const;
+  gi_String  varchar(32767);
+end-pi;
+
+//-------------------------------------------------------------------
+
+p_main(gi_Cmd       :
+      gi_qObj      :
+      gi_objType   :
+      gi_String    );
+
+*inlr = *on;
+
+//==================================================================*
+//  Housekeeping
+//==================================================================*
+
+dcl-proc p_main;
+  dcl-pi *n;
+    i_Cmd     like(gi_Cmd) value;
+    i_qObj    like(gi_qObj) value;
+    i_objType like(gi_objType) value;
+    i_String  like(gi_String);
+  end-pi;
+
+  //  API error code
+  dcl-ds errCode likeds(errCode_t) inz;
+
+  //  Qualified object name
+  dcl-ds qObj;
+    qObj_name char(10) inz;
+    qObj_lib  char(10) inz;
+  end-ds;
+
+  //  Object description OBJD0400
+  dcl-ds OBJD0400 likeds(objd0400_t) inz;
+
+  //  Member description MBRD0100
+  dcl-ds MBRD0100 likeds(mbrd0100_t) inz;
+
+  //  Declare Working Variables
+  dcl-s chgObjInf char(1024) inz(*ALLx'00');
+  dcl-s retLibNme char(10) inz;
+  //  Is the member description available?
+  dcl-s isMbrDscAvl ind inz(cFalse);
+
+  //  Message Description structures
+  dcl-ds COA0003;
+    COA00031 char(010) inz(*blanks);
+    COA00032 char(010) inz(*blanks);
+    COA00033 char(010) inz(*blanks);
+  end-ds;
+  dcl-s COA0003# bindec(8) inz(0030);
+
+  dcl-ds COA0004;
+    COA00041 char(010) inz(*blanks);
+    COA00042 char(010) inz(*blanks);
+    COA00043 char(010) inz(*blanks);
+  end-ds;
+  dcl-s COA0004# bindec(8) inz(0030);
+  //-------------------------------------------------------------------
+
+  //  Get the current Object Description.
+  errCode    = f_newApiErrCode(cTrue);
+  qusrobjd(OBJD0400        :
+          %size(OBJD0400) :
+          'OBJD0400'      :
+          i_qObj          :
+          i_objType       :
+          errCode         );
+
+  If f_isApiError(errCode);
+    qObj = i_qObj;
+    Clear COA0004;
+    COA00041 = qObj_name;
+    COA00042 = qObj_lib;
+    COA00043 = i_objType;
+    p_sndEscMsg('COA0004': COA0004);
+  Endif;
+
+  //  Construct the POP Keyword String.
+
+  i_string = f_addParameter(''         :
+                           'SRCF'     :
+               %trimR(objd0400.srcFile));
+  i_string = f_addParameter(i_string   :
+                           'SRCFLIB'  :
+               %trimR(objd0400.srcLib ));
+  i_string = f_addParameter(i_string   :
+                           'SRCMBR'   :
+               %trimR(objd0400.srcMbr ));
+  i_string = f_addParameter(i_string   :
+                           'SRCDATE'  :
+               f_getDate(objd0400.srcFDatTim));
+  i_string = f_addParameter(i_string   :
+                           'SRCTIME'  :
+               f_getTime(objd0400.srcFDatTim));
+  i_string = f_addParameter(i_string   :
+                           'OBJLVL'   :
+               %TrimR(objd0400.objLvl   ));
+  i_string = f_addParameter(i_string   :
+                           'LICPGM'   :
+               f_getLicPgm(objd0400.licPgm));
+  i_string = f_addParameter(i_string   :
+                           'PTF'      :
+               %TrimR(objd0400.ptf      ));
+  i_string = f_addParameter(i_string   :
+                           'APAR'     :
+               %TrimR(objd0400.apar     ));
+  i_string = f_addParameter(i_string   :
+                           'USRDFNATR':
+               %TrimR(objd0400.usrDfnAtr));
+
+
+  Return;
+
+end-proc;
+
+//==================================================================*
+//  get date from cymd date
+//==================================================================*
+
+dcl-proc f_getDate;
+  dcl-pi *n varchar(16);
+    i_cymdhms likeds(cymdhms_t) value;
+  end-pi;
+
+  dcl-s rtnDate varchar(16) inz;
+
+  dcl-s date date inz;
+  //-------------------------------------------------------------------
+
+  If i_cymdhms.hms <> '';
+    date = %date(i_cymdhms.cymd: *CYMD0);
+    rtnDate = %trimR(%char(date: *JOBRUN0));
+  Else;
+    rtnDate = '';
+  Endif;
+
+  Return rtnDate;
+
+end-proc;
+
+//==================================================================*
+//  get time from cymd date
+//==================================================================*
+
+dcl-proc f_getTime;
+  dcl-pi *n varchar(16);
+    i_cymdhms likeds(cymdhms_t) value;
+  end-pi;
+
+  dcl-s rtnTime varchar(16) inz;
+
+  dcl-s time time inz;
+  //-------------------------------------------------------------------
+
+  If i_cymdhms.hms <> '';
+    time = %time(i_cymdhms.hms: *HMS0);
+    rtnTime = %trimR(%char(time: *JOBRUN0));
+  Else;
+    rtnTime = '';
+  Endif;
+
+  Return rtnTime;
+
+end-proc;
+
+//==================================================================*
+//  get/compress licensed program information
+//==================================================================*
+//  Switch prompt value to '*SAME' if the license program
+//  information ecceeds 13 character.
+//  Regarding to the description of the QLICOBJD API we
+//  we can only change 13 characters of the license program
+//  information, whereas IBM license programs show a
+//  16-character license program information.
+//==================================================================*
+
+dcl-proc f_getLicPgm;
+  dcl-pi *n varchar(13);
+    i_licPgm char(16) value;
+  end-pi;
+
+  dcl-s rtnLicPgm varchar(13) inz;
+
+  dcl-ds licPgm qualified;
+    name      char(7);
+    ibmLicInf char(3);
+    vrm       char(6);
+  end-ds;
+  //-------------------------------------------------------------------
+
+  licPgm = i_licPgm;
+
+  If licPgm.ibmLicInf = '';
+    rtnLicPgm = licPgm.name + licPgm.vrm;
+  Else;
+    rtnLicPgm = '*SAME';
+  Endif;
+
+  Return rtnLicPgm;
+
+end-proc;
+
+//==================================================================*
+//  add parameter to string
+//==================================================================*
+
+dcl-proc f_addParameter;
+  dcl-pi *n like(gi_String);
+    i_string  like(gi_String) value;
+    i_keyword varchar(10) value;
+    i_value   varchar(128) value;
+  end-pi;
+
+  dcl-s rtnString like(gi_String) inz;
+  dcl-s quote varchar(1) inz;
+  //-------------------------------------------------------------------
+
+  rtnString = i_string;
+  If rtnString <> '';
+    rtnString = rtnString + ' ';
+  Endif;
+
+  If %scan(' ': %trimR(i_value)) > 0;
+    quote = cQuote;
+  Else;
+    quote = '';
+  Endif;
+
+  rtnString = rtnString + '?<'
+                       + %trimR(i_keyword)
+                       + '('
+                       + quote
+                       + i_value
+                       + quote
+                       + ')';
+
+  Return rtnString;
+
+end-proc;
+
+//==================================================================*
+//  send escape message
+//==================================================================*
+
+dcl-proc p_sndEscMsg;
+  dcl-pi *n;
+    i_msgID  char(7) value;
+    i_msgDta char(128) value;
+  end-pi;
+
+  //  Declare variables
+  dcl-ds qMsgF;
+    msgF char(10) inz('CHGOBJDA');
+    msgL char(10) inz('*LIBL  ');
+  end-ds;
+  dcl-s msgDtaLen int(10) inz(%size(i_msgDta));
+  dcl-s msgType char(10) inz('*ESCAPE');
+  dcl-s callStckE char(10) inz('*CTLBDY');
+  dcl-s callStckC int(10) inz(1);
+  dcl-s msgKey char(4) inz;
+  dcl-ds errCode likeds(errCode_t) inz;
+  //-------------------------------------------------------------------
+
+  errCode    = f_newApiErrCode(cFalse);
+
+  QMHSNDPM ( i_msgID : qMsgF : i_msgDta :
+  msgDtaLen : msgType : callStckE :
+  callStckC : msgKey : errCode );
+
+end-proc;
+
+//==================================================================*
+//  Is API Error?
+// -----------------------------------------------------------------
+//    cTrue  - error
+//    cFalse - no error
+//==================================================================*
+
+dcl-proc f_isApiError;
+  dcl-pi *n ind;
+    i_errCode char(272) value;
+  end-pi;
+
+  //  Declare logical variable
+  dcl-s o_isError ind inz(cFalse);
+
+  //  Declare API error code
+  dcl-ds errCode likeds(errCode_t) based(pErrCode);
+  //-------------------------------------------------------------------
+
+  pErrCode = %addr(i_errCode);
+
+  If errCode.bytAvl = 0;
+    o_isError = cFalse;
+  Else;
+    o_isError = cTrue;
+  Endif;
+
+  Return o_isError;
+
+end-proc;
+
+//==================================================================*
+//  API error code data structure
+//==================================================================*
+
+dcl-proc f_newApiErrCode;
+  dcl-pi *n char(272);
+    i_monmsg ind value;
+  end-pi;
+
+  //  Declare working Function
+  dcl-ds errCode likeds(errCode_t) inz;
+  //-------------------------------------------------------------------
+
+  Clear errCode;
+
+  If i_monMsg = cTrue;
+    errCode.bytPrv = %size(errCode);
+  Else;
+    errCode.bytPrv = 0;
+  Endif;
+
+  Return errCode;
+
+end-proc;
+

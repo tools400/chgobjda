@@ -1,10 +1,15 @@
-CHGOBJDA - A Tools/400 Utility
-------------------------------
+# CHGOBJDA - A Tools/400 Utility
 
 CHGOBJDA is a utility for changing the object description of a given
 IBM i object.
 
-Dependencies: *NONE
+## Dependencies
+
+Dependencies:
+
+None.
+
+## Installation
 
 Compile members with the following PDM option:
 
@@ -14,5 +19,9 @@ Compile members with the following PDM option:
 
 Members of type MAKPGM or BND are used for linking programs (MAKPGM)
 and service programs (BND).
+
+The [STRPREPRC](https://github.com/tools400/strpreprc) utility is used for compiling the members. The utility retrieves object creation parameters from the source member that is compiled and building and executing the final object creation command.
+
+---
 
 2018, Thomas Raddatz
