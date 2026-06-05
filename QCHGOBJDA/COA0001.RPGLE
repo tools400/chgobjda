@@ -2,7 +2,7 @@
 // ---------------------------------------------------------------
 //  Data structure for message ID: COA0001
 
-//  Die Angaben zur Quellenteildatei sind unvollstndig.
+//  Die Angaben zur Quellenteildatei sind unvollständig.
 
 dcl-ds COA0001;
 end-ds;

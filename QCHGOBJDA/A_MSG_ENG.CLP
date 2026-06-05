@@ -1,5 +1,5 @@
      /* ----------------------------------------------------------- */
-     /*   Cmd-ADDMSGD fr Message-ID :   COA0001                    */
+     /*   Cmd-ADDMSGD für Message-ID :   COA0001                    */
      /* Source member parameters are incomplete.                    */
      /* ----------------------------------------------------------- */
 
@@ -29,7 +29,7 @@ all parameters of the source member are specified. &N Recovery  . . . -
                 /*  -EOF-  */
 
      /* ----------------------------------------------------------- */
-     /*   Cmd-ADDMSGD fr Message-ID :   COA0002                    */
+     /*   Cmd-ADDMSGD für Message-ID :   COA0002                    */
      /* Too many values specified.                                  */
      /* ----------------------------------------------------------- */
 
@@ -54,7 +54,7 @@ eveloper of the utility and report the problem.'                      +
                 /*  -EOF-  */
 
      /* ----------------------------------------------------------- */
-     /*   Cmd-ADDMSGD fr Message-ID :   COA0003                    */
+     /*   Cmd-ADDMSGD für Message-ID :   COA0003                    */
      /* Teildatei &3 in Datei &2/&1 nicht gefunden.                 */
      /* ----------------------------------------------------------- */
 
@@ -83,7 +83,7 @@ ecify the correct member and try the request again.'                  +
                 /*  -EOF-  */
 
      /* ----------------------------------------------------------- */
-     /*   Cmd-ADDMSGD fr Message-ID :   COA0004                    */
+     /*   Cmd-ADDMSGD für Message-ID :   COA0004                    */
      /* Objekt &1 in Bibliothek &2 Art &3 nicht gefunden.           */
      /* ----------------------------------------------------------- */
 

@@ -51,7 +51,7 @@
       appblddate CDATA #REQUIRED
      >
      ]>
-<upload  appname="CHGOBJDA"  appauthor="Thomas Raddatz"  appblddate=" 6/04/2026">
+<upload  appname="CHGOBJDA"  appauthor="Thomas Raddatz"  appblddate=" 6/05/2026">
 <install_instructions><![CDATA[
      *----------------------------------------------------------------      ------
      *  1. Upload entire XML to your AS/400 to a source file 112 long, into any mbr
@@ -1315,7 +1315,7 @@ srccssid=  "01141">
      /* =================================================================== */
      /*  History:                                                           */
      /*                                                                     */
-     /*  Datum       Name           nderung                                 */
+     /*  Datum       Name          Änderung                                 */
      /*  ----------  ------------  ---------------------------------------  */
      /*                                                                     */
      /* =================================================================== */
@@ -1488,7 +1488,7 @@ srclen  =  "00112"
 srccssid=  "01141">
 <copysrc><![CDATA[
      /* ----------------------------------------------------------- */
-     /*   Cmd-ADDMSGD f r Message-ID :   COA0001                    */
+     /*   Cmd-ADDMSGD für Message-ID :   COA0001                    */
      /* Source member parameters are incomplete.                    */
      /* ----------------------------------------------------------- */
 
@@ -1518,7 +1518,7 @@ all parameters of the source member are specified. &N Recovery  . . . -
                 /*  -EOF-  */
 
      /* ----------------------------------------------------------- */
-     /*   Cmd-ADDMSGD f r Message-ID :   COA0002                    */
+     /*   Cmd-ADDMSGD für Message-ID :   COA0002                    */
      /* Too many values specified.                                  */
      /* ----------------------------------------------------------- */
 
@@ -1543,7 +1543,7 @@ eveloper of the utility and report the problem.'                      +
                 /*  -EOF-  */
 
      /* ----------------------------------------------------------- */
-     /*   Cmd-ADDMSGD f r Message-ID :   COA0003                    */
+     /*   Cmd-ADDMSGD für Message-ID :   COA0003                    */
      /* Teildatei &3 in Datei &2/&1 nicht gefunden.                 */
      /* ----------------------------------------------------------- */
 
@@ -1572,7 +1572,7 @@ ecify the correct member and try the request again.'                  +
                 /*  -EOF-  */
 
      /* ----------------------------------------------------------- */
-     /*   Cmd-ADDMSGD f r Message-ID :   COA0004                    */
+     /*   Cmd-ADDMSGD für Message-ID :   COA0004                    */
      /* Objekt &1 in Bibliothek &2 Art &3 nicht gefunden.           */
      /* ----------------------------------------------------------- */
 
@@ -1618,8 +1618,8 @@ srclen  =  "00112"
 srccssid=  "01141">
 <copysrc><![CDATA[
      /* ----------------------------------------------------------- */
-     /*   Cmd-ADDMSGD f r Message-ID :   COA0001                    */
-     /* Die Angaben zur Quellenteildatei sind unvollst ndig.        */
+     /*   Cmd-ADDMSGD für Message-ID :   COA0001                    */
+     /* Die Angaben zur Quellenteildatei sind unvollständig.        */
      /* ----------------------------------------------------------- */
 
              PGM        PARM(&LI)
@@ -1633,13 +1633,13 @@ srccssid=  "01141">
                 MSGID(COA0001) +
                 MSGF(&LI/CHGOBJDA) +
                 MSG(+
-'Die Angaben zur Quellenteildatei sind unvollst ndig.'                +
+'Die Angaben zur Quellenteildatei sind unvollständig.'                +
                 ) +
                 SECLVL(+
 'Ursache . . . . :   Der Sonderwert *SRCMBR kann nur dann verwendet we-
-rden, wenn die Quellenteildatei vollst ndig qualifiziert worden ist. &-
+rden, wenn die Quellenteildatei vollständig qualifiziert worden ist. &-
 N Fehlerbehebung  :   Tragen Sie die Informationen Quellendatei, Quell-
-enbibliothek und Quellenteildatei ein und f hren Sie den Befehl erneut-
+enbibliothek und Quellenteildatei ein und führen Sie den Befehl erneut-
  aus.'                                                                +
                 ) +
                 SEV(00) +
@@ -1649,7 +1649,7 @@ enbibliothek und Quellenteildatei ein und f hren Sie den Befehl erneut-
                 /*  -EOF-  */
 
      /* ----------------------------------------------------------- */
-     /*   Cmd-ADDMSGD f r Message-ID :   COA0002                    */
+     /*   Cmd-ADDMSGD für Message-ID :   COA0002                    */
      /* Zu viele Werte angegeben.                                   */
      /* ----------------------------------------------------------- */
 
@@ -1664,7 +1664,7 @@ enbibliothek und Quellenteildatei ein und f hren Sie den Befehl erneut-
                 ) +
                 SECLVL(+
 'Ursache . . . . :   Es wurden zu viele Werte angegeben. Ein internes -
-Arbeitsfeld ist nicht gross genug, um alle Werte verarbeiten zu k nnen-
+Arbeitsfeld ist nicht gross genug, um alle Werte verarbeiten zu können-
 . &N Fehlerbehebung  :   Melden sie das Problem an den Entwickler.'   +
                 ) +
                 SEV(00) +
@@ -1674,7 +1674,7 @@ Arbeitsfeld ist nicht gross genug, um alle Werte verarbeiten zu k nnen-
                 /*  -EOF-  */
 
      /* ----------------------------------------------------------- */
-     /*   Cmd-ADDMSGD f r Message-ID :   COA0003                    */
+     /*   Cmd-ADDMSGD für Message-ID :   COA0003                    */
      /* Teildatei &3 in Datei &2/&1 nicht gefunden.                 */
      /* ----------------------------------------------------------- */
 
@@ -1690,7 +1690,7 @@ Arbeitsfeld ist nicht gross genug, um alle Werte verarbeiten zu k nnen-
                 SECLVL(+
 'Ursache . . . . :   Die Teildatei &3 konnte in der Datei &2/&1 nicht -
 gefunden werden. &N Fehlerbehebung  :   Geben Sie den richtigen Stando-
-rt der Teildatei &3 an und f hren Sie den Befehl erneut aus.'         +
+rt der Teildatei &3 an und führen Sie den Befehl erneut aus.'         +
                 ) +
                 SEV(00) +
                 FMT( +
@@ -1703,7 +1703,7 @@ rt der Teildatei &3 an und f hren Sie den Befehl erneut aus.'         +
                 /*  -EOF-  */
 
      /* ----------------------------------------------------------- */
-     /*   Cmd-ADDMSGD f r Message-ID :   COA0004                    */
+     /*   Cmd-ADDMSGD für Message-ID :   COA0004                    */
      /* Objekt &1 in Bibliothek &2 Art &3 nicht gefunden.           */
      /* ----------------------------------------------------------- */
 
@@ -1720,7 +1720,7 @@ rt der Teildatei &3 an und f hren Sie den Befehl erneut aus.'         +
 'Ursache . . . . :   Das Objekt &1 in Bibliothek &2 Art *&3 wurde nich-
 t gefunden. Der Objektname, der Bibliotheksname oder die Objektart ist-
  nicht korrekt. Wurde der Bibliotheksname nicht angegeben, befindet si-
-ch das Objekt m glicherweise in einer Bibliothek, die nicht in der Bib-
+ch das Objekt möglicherweise in einer Bibliothek, die nicht in der Bib-
 liotheksliste enthalten ist.'                                         +
                 ) +
                 SEV(00) +
@@ -1805,7 +1805,7 @@ srccssid=  "01141">
 /* =================================================================== */
 /*  History:                                                           */
 /*                                                                     */
-/*  Datum       Name           nderung                                 */
+/*  Datum       Name          Änderung                                 */
 /*  ----------  ------------  ---------------------------------------  */
 /*  02.02.2006  Th.Raddatz    Adopted the prompt override enhancement  */
 /*                            contributed by Bill Reger. Thanks Bill!  */
@@ -2078,7 +2078,7 @@ srccssid=  "01141">
 /* =================================================================== */
 /*  History:                                                           */
 /*                                                                     */
-/*  Datum       Name           nderung                                 */
+/*  Datum       Name          Änderung                                 */
 /*  ----------  ------------  ---------------------------------------  */
 /*  02.02.2006  Th.Raddatz    Adopted the prompt override enhancement  */
 /*                            contributed by Bill Reger. Thanks Bill!  */
@@ -2103,7 +2103,7 @@ srccssid=  "01141">
 /* >>END-PRE-COMPILER<<                                                */
 /* =================================================================== */
 
-             CMD        PROMPT('Objektbeschr.Attribute  ndern')
+             CMD        PROMPT('Objektbeschr.Attribute ändern')
 
              PARM       KWD(OBJ)                +
                         TYPE(QUAL1)             +
@@ -2297,7 +2297,7 @@ QUAL1:       QUAL       TYPE(*NAME)             +
                           (*CURLIB ))           +
                         PROMPT('Bibliothek')
 
- /* ... Abh ngigkeiten zu SRCDATE    */
+ /* ... Abhängigkeiten zu SRCDATE    */
              DEP        CTL(&SRCDATE *EQ 0000001)   +
                         PARM((&SRCF    *NE ' ')     +
                              (&SRCFLIB *NE ' ')     +
@@ -2305,7 +2305,7 @@ QUAL1:       QUAL       TYPE(*NAME)             +
                         NBRTRUE(*ALL )              +
                         MSGID(COA0001)
 
- /* ... Abh ngigkeiten zu SRCTIME    */
+ /* ... Abhängigkeiten zu SRCTIME    */
              DEP        CTL(&SRCTIME *EQ 000001)    +
                         PARM((&SRCF    *NE ' ')     +
                              (&SRCFLIB *NE ' ')     +
@@ -2351,7 +2351,7 @@ srccssid=  "01141">
 .*=====================================================================*
 .*  History:                                                           *
 .*                                                                     *
-.*  Datum       Name           nderung                                 *
+.*  Datum       Name          Änderung                                 *
 .*  ----------  ------------  ---------------------------------------  *
 .*                                                                     *
 .*=====================================================================*
@@ -2852,7 +2852,7 @@ srccssid=  "01141">
 .*=====================================================================*
 .*  History:                                                           *
 .*                                                                     *
-.*  Datum       Name           nderung                                 *
+.*  Datum       Name          Änderung                                 *
 .*  ----------  ------------  ---------------------------------------  *
 .*                                                                     *
 .*=====================================================================*
@@ -2895,13 +2895,13 @@ srccssid=  "01141">
 .*  Primary help text for the command.
 .*****************************************************************
 :HELP NAME='CHGOBJDA'.
-Objektbeschr.Attribute  ndern - Hilfe
+Objektbeschr.Attribute ändern - Hilfe
 :P.
-Der Befehl Objektbeschreibung  ndern (CHGOBJD)  ndert verschiedene
+Der Befehl Objektbeschreibung ändern (CHGOBJD) ändert verschiedene
 Attribute der Objektbeschreibung.
 :P.
-Obwohl der Befehl CHGOBJDA urspr nglich entwickelt worden ist, um
-die eingesetzte Change Management Software an eigene Bed rfnisse
+Obwohl der Befehl CHGOBJDA ursprünglich entwickelt worden ist, um
+die eingesetzte Change Management Software an eigene Bedürfnisse
 anzupassen, kann er auch ausserhalb der Change Management Software
 verwendet werden und gute Dienste leisten.
 :EHELP.
@@ -2920,27 +2920,27 @@ Objekt (OBJ) - Hilfe
 
 :P.
 Gibt den qualifizierten Namen des Objekts an, dessen
-Objektbeschreibung ge ndert wird. Wird kein Bibliotheksname angegeben,
+Objektbeschreibung geändert wird. Wird kein Bibliotheksname angegeben,
 wird das angegebene Objekt anhand der Bibliotheksliste (*LIBL)
 gesucht. Die Angabe des Bibliotheksnamens dient dazu,
-sicherzustellen, da  das korrekte Objekt angegeben wird.
+sicherzustellen, daß das korrekte Objekt angegeben wird.
 
 :IMHELP name='COM/REQPARM'.
 :P.
-M gliche Werte f r :HP2.Objektname:EHP2. sind:
+Mögliche Werte für :HP2.Objektname:EHP2. sind:
 
 :PARML.
 :PT.:PV.Objektname:EPV.
-:PD.Den Namen des zu  ndernden Objekts angeben.
+:PD.Den Namen des zu ändernden Objekts angeben.
 :EPARML.
 :P.
 
-G ltige Bibliothekswerte sind:
+Gültige Bibliothekswerte sind:
 
 :PARML.
 :PT.:PK DEF.*LIBL:EPK.
 :PD.Alle Bibliotheken in der Bibliotheksliste des Jobs werden
-durchsucht, bis die erste  bereinstimmung gefunden wird.
+durchsucht, bis die erste Übereinstimmung gefunden wird.
 :PT.:PV.*CURLIB:EPV.
 :PD.Das Objekt wird mit Hilfe der aktuellen Jobbibliothek gesucht.
 Ist keine Bibliothek als aktuelle Jobbibliothek angegeben, wird
@@ -2959,10 +2959,10 @@ Objektart (OBJTYPE) - Hilfe
 :XH3.Objektart (OBJTYPE)
 
 :P.
-Gibt die Objektart des Objekts an, das ge ndert werden soll. Um eine
-vollst ndige Liste der Objektarten zu erhalten, den
-Positionsanzeiger in das Feld f r Objektart (Parameter OBJTYPE)
-bewegen und die Taste F4 dr cken.
+Gibt die Objektart des Objekts an, das geändert werden soll. Um eine
+vollständige Liste der Objektarten zu erhalten, den
+Positionsanzeiger in das Feld für Objektart (Parameter OBJTYPE)
+bewegen und die Taste F4 drücken.
 
 :IMHELP name='COM/REQPARM'.
 :P.
@@ -2970,7 +2970,7 @@ bewegen und die Taste F4 dr cken.
 
 :PARML.
 :PT.:PV.Objektart:EPV.
-:PD.Den vordefinierten Wert angegeben, der die zu  ndernde Objektart
+:PD.Den vordefinierten Wert angegeben, der die zu ändernde Objektart
 bezeichnet.
 :EPARML.
 :EHELP.
@@ -2984,7 +2984,7 @@ Quellendatei (SRCF) - Hilfe
 :XH3.Quellendatei (SRCF)
 
 :P.
-Name der Quellendatei, welche die Quellenteildatei enth lt, aus
+Name der Quellendatei, welche die Quellenteildatei enthält, aus
 der das Objekt erstellt worden ist.
 
 :IMHELP name='COM/OPTPARM'.
@@ -2993,11 +2993,11 @@ der das Objekt erstellt worden ist.
 
 :PARML.
 :PT.:PK DEF.*SAME:EPK.
-:PD.Der Name der Quellendatei bleibt unver ndert.
+:PD.Der Name der Quellendatei bleibt unverändert.
 :PT.:PV.*BLANK:EPV.
 :PD.Es ist kein Name einer Quellendatei angegeben.
 :PT.:PV.Quellendatei:EPV.
-:PD.Name der Quellendatei, welche die Quellenteildatei enth lt, aus
+:PD.Name der Quellendatei, welche die Quellenteildatei enthält, aus
 der das Objekt erstellt worden ist.
 :EPARML.
 :EHELP.
@@ -3011,7 +3011,7 @@ Quellenbibliothek (SRCFLIB) - Hilfe
 :XH3.Quellenbibliothek (SRCFLIB)
 
 :P.
-Name der Bibliothek, welche die Quellendatei enth lt.
+Name der Bibliothek, welche die Quellendatei enthält.
 
 :IMHELP name='COM/OPTPARM'.
 :P.
@@ -3019,11 +3019,11 @@ Name der Bibliothek, welche die Quellendatei enth lt.
 
 :PARML.
 :PT.:PK DEF.*SAME:EPK.
-:PD.Der Name der Quellenbibliothek bleibt unver ndert.
+:PD.Der Name der Quellenbibliothek bleibt unverändert.
 :PT.:PV.*BLANK:EPV.
 :PD.Es ist kein Name einer Quellenbibliothek angegeben.
 :PT.:PV.Quellenbibliothek:EPV.
-:PD.Name der Bibliothek, welche die Quellendatei enth lt.
+:PD.Name der Bibliothek, welche die Quellendatei enthält.
 :EPARML.
 :EHELP.
 
@@ -3044,7 +3044,7 @@ Name der Quellenteildatei, aus der das Objekt erstellt worden ist.
 
 :PARML.
 :PT.:PK DEF.*SAME:EPK.
-:PD.Der Name der Quellenteildatei bleibt unver ndert.
+:PD.Der Name der Quellenteildatei bleibt unverändert.
 :PT.:PV.*BLANK:EPV.
 :PD.Es ist kein Name einer Quellenteildatei angegeben.
 :PT.:PV.Quellenteildatei:EPV.
@@ -3062,7 +3062,7 @@ Datum Quellenteildatei (SRCDATE) - Hilfe
 
 :P.
 Bei einer physischen Quellenteildtei ist dies das Datum, an dem der
-Dateiinhalt zuletzt ge ndert wurde.
+Dateiinhalt zuletzt geändert wurde.
 
 :IMHELP name='COM/OPTPARM'.
 :P.
@@ -3070,12 +3070,12 @@ Dateiinhalt zuletzt ge ndert wurde.
 
 :PARML.
 :PT.:PK DEF.*SAME:EPK.
-:PD.Das Datum der letzten  nderung bleibt unver ndert.
+:PD.Das Datum der letzten Änderung bleibt unverändert.
 :PT.:PV.*SRCMBR:EPV.
-:PD.Das Datum der letzen  nderung wird der im Parameter
+:PD.Das Datum der letzen Änderung wird der im Parameter
 :HP2.Quellenteildatei:EHP2. angegebenen Teildatei entnommen.
 :PT.:PV.Datum:EPV.
-:PD.Datum der letzen  nderung des Dateiinhalts.
+:PD.Datum der letzen Änderung des Dateiinhalts.
 :EPARML.
 :EHELP.
 
@@ -3089,7 +3089,7 @@ Uhrzeit Quellenteildatei (SRCTIME) - Hilfe
 
 :P.
 Bei einer physischen Quellenteildtei ist dies die Uhrzeit, an dem der
-Dateiinhalt zuletzt ge ndert wurde.
+Dateiinhalt zuletzt geändert wurde.
 
 :IMHELP name='COM/OPTPARM'.
 :P.
@@ -3097,12 +3097,12 @@ Dateiinhalt zuletzt ge ndert wurde.
 
 :PARML.
 :PT.:PK DEF.*SAME:EPK.
-:PD.Die Uhrzeit der letzten  nderung bleibt unver ndert.
+:PD.Die Uhrzeit der letzten Änderung bleibt unverändert.
 :PT.:PV.*SRCMBR:EPV.
-:PD.Die Uhrzeit der letzen  nderung wird der im Parameter
+:PD.Die Uhrzeit der letzen Änderung wird der im Parameter
 :HP2.Quellenteildatei:EHP2. angegebenen Teildatei entnommen.
 :PT.:PV.Uhrzeit:EPV.
-:PD.Uhrzeit der letzen  nderung des Dateiinhalts.
+:PD.Uhrzeit der letzen Änderung des Dateiinhalts.
 :EPARML.
 :EHELP.
 
@@ -3116,7 +3116,7 @@ Objektsteuerstufe (OBJLVL) - Hilfe
 
 :P.
 Die Objektsteuerstufe eines Objekts sollte aus einer eindeutigen
-Ident-Nummer bestehen, die mit jeder  nderung des Objects ge ndert
+Ident-Nummer bestehen, die mit jeder Änderung des Objects geändert
 werden sollte.
 :P.
 Die Change Management Software benutzt die Objektsteuerstufe zur
@@ -3128,7 +3128,7 @@ Speicherung der Task-Nummer, der das Objekt zugeordnet war.
 
 :PARML.
 :PT.:PK DEF.*SAME:EPK.
-:PD.Die Objektsteuerstufe bleibt unver ndert.
+:PD.Die Objektsteuerstufe bleibt unverändert.
 :PT.:PV.*BLANK:EPV.
 :PD.Es ist keine Objektsteuerstufe angegeben.
 :PT.:PV.Objektsteuerstufe:EPV.
@@ -3146,7 +3146,7 @@ Lizenzprogramm (LICPGM) - Hilfe
 
 :P.
 Name, Versionsstufe, Releasestufe und Modifikationsstufe
-des Lizenzprogramms, zu dem das Objekt geh rt.
+des Lizenzprogramms, zu dem das Objekt gehört.
 :P.
 :LINES.
 Stelle  1- 7:  Programmkenunng
@@ -3170,12 +3170,12 @@ Stelle  5- 7:  Modifikationsstufe  (*MINOR)
 
 :PARML.
 :PT.:PK DEF.*SAME:EPK.
-:PD.Die Angaben zum Lizenzprogramm bleiben unver ndert.
+:PD.Die Angaben zum Lizenzprogramm bleiben unverändert.
 :PT.:PV.*BLANK:EPV.
 :PD.Es ist kein Lizenzprogramm angegeben.
 :PT.:PV.Lizenzprogramm:EPV.
 :PD.Name, Versionsstufe, Releasestufe und Modifikationsstufe
-des Lizenzprogramms, zu dem das Objekt geh rt.
+des Lizenzprogramms, zu dem das Objekt gehört.
 :EPARML.
 :EHELP.
 
@@ -3188,8 +3188,8 @@ PTF-Nummer (PTF) - Hilfe
 :XH3.PTF-Nummer (PTF)
 
 :P.
-Nummer der vorl ufigen Programmkorrektur die zur Erstellung
-des Objekts gef hrt hat.
+Nummer der vorläufigen Programmkorrektur die zur Erstellung
+des Objekts geführt hat.
 :P.
 Die Change Management Software benutzt die PTF-Nummer zur
 Speicherung der Form-Nummer, mit der das Objekt verbracht worden ist.
@@ -3201,12 +3201,12 @@ Speicherung der Form-Nummer, mit der das Objekt verbracht worden ist.
 
 :PARML.
 :PT.:PK DEF.*SAME:EPK.
-:PD.Die PTF-Nummer bleibt unver ndert.
+:PD.Die PTF-Nummer bleibt unverändert.
 :PT.:PV.*BLANK:EPV.
 :PD.Es ist keine PTF-Nummer angegeben.
 :PT.:PV.PTF-Nummer:EPV.
-:PD.Nummer der vorl ufigen Programmkorrektur die zur Erstellung
-des Objekts gef hrt hat.
+:PD.Nummer der vorläufigen Programmkorrektur die zur Erstellung
+des Objekts geführt hat.
 :EPARML.
 :EHELP.
 
@@ -3220,10 +3220,10 @@ APAR-Nummer (APAR) - Hilfe
 
 :P.
 APAR-ID (Authorized Problem Analysis Report ID) die
-zur Korrektur des Objekts gef hrt hat.
+zur Korrektur des Objekts geführt hat.
 :P.
 Die Change Management Software benutzt die APAR-ID zur
-Speicherung der Anwendung, zu der das Objekt geh rt.
+Speicherung der Anwendung, zu der das Objekt gehört.
 :P.
 :LINES.
 Stelle  1- 4:  Anwendung
@@ -3237,12 +3237,12 @@ Stelle  5- 6:  unbekannt
 
 :PARML.
 :PT.:PK DEF.*SAME:EPK.
-:PD.Die APAR-ID bleibt unver ndert.
+:PD.Die APAR-ID bleibt unverändert.
 :PT.:PV.*BLANK:EPV.
 :PD.Es ist keine APAR-ID angegeben.
 :PT.:PV.APAR-ID:EPV.
 :PD.APAR-ID (Authorized Problem Analysis Report ID) die
-zur Korrektur des Objekts gef hrt hat.
+zur Korrektur des Objekts geführt hat.
 :EPARML.
 :EHELP.
 
@@ -3255,11 +3255,11 @@ Benutzerdefiniertes Attribut (USRDFNATR) - Hilfe
 :XH3.Benutzerdefiniertes Attribut (USRDFNATR)
 
 :P.
-Das benutzerdefinierte Attribute eines Objekts kann zur n heren
+Das benutzerdefinierte Attribute eines Objekts kann zur näheren
 Spezifizierung eines Objekts benutzt werden.
 :P.
 Die Change Management Software benutzt das benutzerdefinierte Attribut
-zur Speicherung des Type Codes, zu dem das Objekt geh rt.
+zur Speicherung des Type Codes, zu dem das Objekt gehört.
 :P.
 
 :IMHELP name='COM/OPTPARM'.
@@ -3268,11 +3268,11 @@ zur Speicherung des Type Codes, zu dem das Objekt geh rt.
 
 :PARML.
 :PT.:PK DEF.*SAME:EPK.
-:PD.Das benutzerdefinierte Attribut bleibt unver ndert.
+:PD.Das benutzerdefinierte Attribut bleibt unverändert.
 :PT.:PV.*BLANK:EPV.
 :PD.Es ist kein benutzerdefiniertes Attribut angegeben.
 :PT.:PV.Benutzerdefiniertes Attribut:EPV.
-:PD.Benutzerdefiniertes Attribut zur n heren Spezifizierung
+:PD.Benutzerdefiniertes Attribut zur näheren Spezifizierung
 des Objekts.
 :EPARML.
 :EHELP.
@@ -3302,7 +3302,7 @@ Dieser Parameter ist optional.
 .********************************************
 :HELP NAME='COM/VALUES'.
 :P.
-M gliche Werte sind:
+Mögliche Werte sind:
 :EHELP.
 
 .*****************************************************************
@@ -3341,7 +3341,7 @@ srccssid=  "01141">
 //                                                              *
 //  Kurzdokumentation :                                         *
 //                                                              *
-//  Befehlsausf hrungsprogramm f r Befehl CHGOBJDA              *
+//  Befehlsausführungsprogramm für Befehl CHGOBJDA              *
 //                                                              *
 //==============================================================*
 // >>PRE-COMPILER<<                                             *
@@ -3668,7 +3668,7 @@ dcl-proc p_main;
       srcMbr = objd0400.srcMbr;
     Endif;
 
-    //      ... Eintragen neuen Schl ssel in neue Objektbeschreibung
+    //      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
     If not f_addKeyE(chgObjInf: cSrcFile:
     srcFile + srcLib + srcMbr);
       p_sndEscMsg('COA0002': ' ');
@@ -3724,7 +3724,7 @@ dcl-proc p_main;
       srcTime = i_srcTime;
     Endsl;
 
-    //      ... Eintragen neuen Schl ssel in neue Objektbeschreibung
+    //      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
     If not f_addKeyE(chgObjInf: cSrcFDatTim:
     srcFDatTim            );
       p_sndEscMsg('COA0002': ' ');
@@ -3738,7 +3738,7 @@ dcl-proc p_main;
       objLvl    = objd0400.objLvl;
     Endif;
 
-    //      ... Eintragen neuen Schl ssel in neue Objektbeschreibung
+    //      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
     If not f_addKeyE(chgObjInf: cObjLvl   :
     objLvl               );
       p_sndEscMsg('COA0002': ' ');
@@ -3752,7 +3752,7 @@ dcl-proc p_main;
       licPgm    = objd0400.licPgm;
     Endif;
 
-    //      ... Eintragen neuen Schl ssel in neue Objektbeschreibung
+    //      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
     If not f_addKeyE(chgObjInf: cLicPgm   :
     licPgm               );
       p_sndEscMsg('COA0002': ' ');
@@ -3766,7 +3766,7 @@ dcl-proc p_main;
       ptf       = objd0400.ptf;
     Endif;
 
-    //      ... Eintragen neuen Schl ssel in neue Objektbeschreibung
+    //      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
     If not f_addKeyE(chgObjInf: cPTF      :
     ptf                  );
       p_sndEscMsg('COA0002': ' ');
@@ -3780,7 +3780,7 @@ dcl-proc p_main;
       apar      = objd0400.apar;
     Endif;
 
-    //      ... Eintragen neuen Schl ssel in neue Objektbeschreibung
+    //      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
     If not f_addKeyE(chgObjInf: cAPAR     :
     apar                 );
       p_sndEscMsg('COA0002': ' ');
@@ -3794,14 +3794,14 @@ dcl-proc p_main;
       usrDfnAtr = objd0400.usrDfnAtr;
     Endif;
 
-    //      ... Eintragen neuen Schl ssel in neue Objektbeschreibung
+    //      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
     If not f_addKeyE(chgObjInf: cUsrDfnAtr:
     usrDfnAtr            );
       p_sndEscMsg('COA0002': ' ');
       Return;
     Endif;
 
-    //   ndern der Objektbeschreibung
+    //  Ändern der Objektbeschreibung
     QLICOBJD ( retLibNme : i_qObj :
     i_objType : chgObjInf : errCode );
   Endif;
@@ -3852,7 +3852,7 @@ dcl-proc f_addKeyE;
     pos     = pos  + 8 + keyLen;
   endfor;
 
-  //  Anf gen der neuen Informationen
+  //  Anfügen der neuen Informationen
   If pos >= %size(io_chgObjInf) - 4 - 4 - currLen;
     Return cFalse;
   Else;
@@ -4017,12 +4017,12 @@ srccssid=  "01141">
 //                                                              *
 //  Kurzdokumentation :                                         *
 //                                                              *
-//  Prompt Override Programm f r Befehl CHGOBJDA                *
+//  Prompt Override Programm für Befehl CHGOBJDA                *
 //                                                              *
 // ============================================================ *
 //  History:                                                    *
 //                                                              *
-//  Datum       Name           nderung                          *
+//  Datum       Name          Änderung                          *
 //  ----------  ------------  --------------------------------- *
 //  23.06.2007  Th.Raddatz    Fixed error in f_getDate() and    *
 //                            f_getTime() when objd0400.srcFDatTim
@@ -4537,7 +4537,7 @@ srccssid=  "01141">
 // ---------------------------------------------------------------
 //  Data structure for message ID: COA0001
 
-//  Die Angaben zur Quellenteildatei sind unvollst ndig.
+//  Die Angaben zur Quellenteildatei sind unvollständig.
 
 dcl-ds COA0001;
 end-ds;

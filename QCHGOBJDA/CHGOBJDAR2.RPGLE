@@ -14,12 +14,12 @@
 //                                                              *
 //  Kurzdokumentation :                                         *
 //                                                              *
-//  Prompt Override Programm fr Befehl CHGOBJDA                *
+//  Prompt Override Programm für Befehl CHGOBJDA                *
 //                                                              *
 // ============================================================ *
 //  History:                                                    *
 //                                                              *
-//  Datum       Name          nderung                          *
+//  Datum       Name          Änderung                          *
 //  ----------  ------------  --------------------------------- *
 //  23.06.2007  Th.Raddatz    Fixed error in f_getDate() and    *
 //                            f_getTime() when objd0400.srcFDatTim

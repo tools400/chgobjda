@@ -14,7 +14,7 @@
 //                                                              *
 //  Kurzdokumentation :                                         *
 //                                                              *
-//  Befehlsausfhrungsprogramm fr Befehl CHGOBJDA              *
+//  Befehlsausführungsprogramm für Befehl CHGOBJDA              *
 //                                                              *
 //==============================================================*
 // >>PRE-COMPILER<<                                             *
@@ -341,7 +341,7 @@ dcl-proc p_main;
       srcMbr = objd0400.srcMbr;
     Endif;
 
-    //      ... Eintragen neuen Schlssel in neue Objektbeschreibung
+    //      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
     If not f_addKeyE(chgObjInf: cSrcFile:
     srcFile + srcLib + srcMbr);
       p_sndEscMsg('COA0002': ' ');
@@ -397,7 +397,7 @@ dcl-proc p_main;
       srcTime = i_srcTime;
     Endsl;
 
-    //      ... Eintragen neuen Schlssel in neue Objektbeschreibung
+    //      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
     If not f_addKeyE(chgObjInf: cSrcFDatTim:
     srcFDatTim            );
       p_sndEscMsg('COA0002': ' ');
@@ -411,7 +411,7 @@ dcl-proc p_main;
       objLvl    = objd0400.objLvl;
     Endif;
 
-    //      ... Eintragen neuen Schlssel in neue Objektbeschreibung
+    //      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
     If not f_addKeyE(chgObjInf: cObjLvl   :
     objLvl               );
       p_sndEscMsg('COA0002': ' ');
@@ -425,7 +425,7 @@ dcl-proc p_main;
       licPgm    = objd0400.licPgm;
     Endif;
 
-    //      ... Eintragen neuen Schlssel in neue Objektbeschreibung
+    //      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
     If not f_addKeyE(chgObjInf: cLicPgm   :
     licPgm               );
       p_sndEscMsg('COA0002': ' ');
@@ -439,7 +439,7 @@ dcl-proc p_main;
       ptf       = objd0400.ptf;
     Endif;
 
-    //      ... Eintragen neuen Schlssel in neue Objektbeschreibung
+    //      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
     If not f_addKeyE(chgObjInf: cPTF      :
     ptf                  );
       p_sndEscMsg('COA0002': ' ');
@@ -453,7 +453,7 @@ dcl-proc p_main;
       apar      = objd0400.apar;
     Endif;
 
-    //      ... Eintragen neuen Schlssel in neue Objektbeschreibung
+    //      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
     If not f_addKeyE(chgObjInf: cAPAR     :
     apar                 );
       p_sndEscMsg('COA0002': ' ');
@@ -467,14 +467,14 @@ dcl-proc p_main;
       usrDfnAtr = objd0400.usrDfnAtr;
     Endif;
 
-    //      ... Eintragen neuen Schlssel in neue Objektbeschreibung
+    //      ... Eintragen neuen Schlüssel in neue Objektbeschreibung
     If not f_addKeyE(chgObjInf: cUsrDfnAtr:
     usrDfnAtr            );
       p_sndEscMsg('COA0002': ' ');
       Return;
     Endif;
 
-    //  ndern der Objektbeschreibung
+    //  Ändern der Objektbeschreibung
     QLICOBJD ( retLibNme : i_qObj :
     i_objType : chgObjInf : errCode );
   Endif;
@@ -525,7 +525,7 @@ dcl-proc f_addKeyE;
     pos     = pos  + 8 + keyLen;
   endfor;
 
-  //  Anfgen der neuen Informationen
+  //  Anfügen der neuen Informationen
   If pos >= %size(io_chgObjInf) - 4 - 4 - currLen;
     Return cFalse;
   Else;

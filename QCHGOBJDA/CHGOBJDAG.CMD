@@ -21,7 +21,7 @@
 /* =================================================================== */
 /*  History:                                                           */
 /*                                                                     */
-/*  Datum       Name          nderung                                 */
+/*  Datum       Name          Änderung                                 */
 /*  ----------  ------------  ---------------------------------------  */
 /*  02.02.2006  Th.Raddatz    Adopted the prompt override enhancement  */
 /*                            contributed by Bill Reger. Thanks Bill!  */
@@ -46,7 +46,7 @@
 /* >>END-PRE-COMPILER<<                                                */
 /* =================================================================== */
 
-             CMD        PROMPT('Objektbeschr.Attribute ndern')
+             CMD        PROMPT('Objektbeschr.Attribute ändern')
 
              PARM       KWD(OBJ)                +
                         TYPE(QUAL1)             +
@@ -240,7 +240,7 @@ QUAL1:       QUAL       TYPE(*NAME)             +
                           (*CURLIB ))           +
                         PROMPT('Bibliothek')
 
- /* ... Abhngigkeiten zu SRCDATE    */
+ /* ... Abhängigkeiten zu SRCDATE    */
              DEP        CTL(&SRCDATE *EQ 0000001)   +
                         PARM((&SRCF    *NE ' ')     +
                              (&SRCFLIB *NE ' ')     +
@@ -248,7 +248,7 @@ QUAL1:       QUAL       TYPE(*NAME)             +
                         NBRTRUE(*ALL )              +
                         MSGID(COA0001)
 
- /* ... Abhngigkeiten zu SRCTIME    */
+ /* ... Abhängigkeiten zu SRCTIME    */
              DEP        CTL(&SRCTIME *EQ 000001)    +
                         PARM((&SRCF    *NE ' ')     +
                              (&SRCFLIB *NE ' ')     +
